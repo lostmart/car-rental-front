@@ -113,6 +113,7 @@ footer ul {
 
 	.top-header ul {
 		height: 50px;
+		gap: 15px;
 	}
 
 	header {
