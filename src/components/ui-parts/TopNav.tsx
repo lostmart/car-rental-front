@@ -5,13 +5,8 @@ import {
 	FaTwitter,
 	FaInstagram,
 } from "react-icons/fa"
-import { IconType } from "react-icons"
-
-type UrlLink = {
-	urlLink: string
-	text?: string
-	icon: string | IconType
-}
+import SocialButtons from "./SocialButtons"
+import UrlLink from "../../interfaces/UrlLink"
 
 export default function Root() {
 	const urlList: UrlLink[] = [
@@ -27,7 +22,7 @@ export default function Root() {
 		},
 	]
 
-	const soclaList: UrlLink[] = [
+	const socialList: UrlLink[] = [
 		{
 			urlLink: "https://www.facebook.com/",
 			icon: FaFacebookF,
@@ -41,32 +36,21 @@ export default function Root() {
 			icon: FaInstagram,
 		},
 	]
+
 	return (
 		<div className="top-header">
 			<div className="container">
 				<ul>
-					{urlList.map((liItem) => {
-						return (
-							<li key={liItem.urlLink}>
-								<a href={liItem.urlLink}>
-									{<liItem.icon style={{ marginRight: "10px" }} />}
-									{liItem.text}
-								</a>
-							</li>
-						)
-					})}
+					{urlList.map((liItem) => (
+						<li key={liItem.urlLink}>
+							<a href={liItem.urlLink}>
+								<liItem.icon style={{ marginRight: "10px" }} />
+								{liItem.text}
+							</a>
+						</li>
+					))}
 				</ul>
-				<ul>
-					{soclaList.map((liItem) => {
-						return (
-							<li key={liItem.urlLink}>
-								<a href={liItem.urlLink}>
-									{<liItem.icon style={{ marginRight: "10px" }} />}
-								</a>
-							</li>
-						)
-					})}
-				</ul>
+				<SocialButtons socialList={socialList} />
 			</div>
 		</div>
 	)

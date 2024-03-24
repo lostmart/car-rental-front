@@ -75,6 +75,21 @@ header {
 	margin-top: 77px;
 }
 
+main {
+	min-height: 82dvh;
+}
+
+footer {
+	background-color: #192a30;
+	padding: 15px 25px;
+}
+footer ul {
+	display: flex;
+	justify-content: space-evenly;
+	max-width: 380px;
+	margin: auto;
+}
+
 @media only screen and (min-width: 510px) {
 	.top-header ul:first-child {
 		height: auto;

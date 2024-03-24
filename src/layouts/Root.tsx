@@ -1,8 +1,27 @@
 import { Outlet, Link } from "react-router-dom"
 import Nav from "../components/ui-parts/NavBar"
 import TopNav from "../components/ui-parts/TopNav"
+import FooterComponent from "../components/FooterComponent"
+
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
+
+import UrlLink from "../interfaces/UrlLink"
 
 export default function Root() {
+	const socialList: UrlLink[] = [
+		{
+			urlLink: "https://www.facebook.com/",
+			icon: FaFacebookF,
+		},
+		{
+			urlLink: "https://twitter.com/",
+			icon: FaTwitter,
+		},
+		{
+			urlLink: "https://www.instagram.com/",
+			icon: FaInstagram,
+		},
+	]
 	return (
 		<>
 			<TopNav />
@@ -22,6 +41,7 @@ export default function Root() {
 			<main>
 				<Outlet />
 			</main>
+			<FooterComponent socialList={socialList} />
 		</>
 	)
 }
