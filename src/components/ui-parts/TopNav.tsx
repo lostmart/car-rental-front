@@ -8,7 +8,7 @@ import {
 import SocialButtons from "./SocialButtons"
 import UrlLink from "../../interfaces/UrlLink"
 
-export default function Root() {
+export default function TopNav() {
 	const urlList: UrlLink[] = [
 		{
 			urlLink: "tel:+1 987 654 3210",
