@@ -5,15 +5,16 @@
 .navbar ul {
 	display: flex;
 	padding: 10px;
-	gap: 10px;
+	gap: 40px;
 }
 
 .navbar .links-container {
+	display: none;
 	position: absolute;
-	display: flex;
+	/* display: flex; */
 	gap: 20px;
 	flex-direction: column;
 	background-color: white;
 	color: black;
-	padding: 30px 25px;
+	padding: 25px;
 }
