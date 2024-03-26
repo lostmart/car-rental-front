@@ -33,7 +33,13 @@ export default function Root() {
 							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/about">About</Link>
+							<span>Pages</span>
+							<div className="links-container">
+								<Link to="/about">About</Link>
+								<Link to="/about">Drivers</Link>
+								<Link to="/about">Pricing Plans</Link>
+								<Link to="/about">Booking Form</Link>
+							</div>
 						</li>
 					</ul>
 				</Nav>
