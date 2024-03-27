@@ -6,12 +6,26 @@
 	backdrop-filter: blur(2px);
 }
 
-.navbar ul {
+.navbar .desktop-nav {
 	display: none;
 	padding: 10px;
 	gap: 40px;
 	max-width: 900px;
 	margin: auto;
+}
+
+.navbar .mobile-nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	width: 100%;
+	background: #ffffff5c;
+	color: red;
+	gap: 20px;
+	backdrop-filter: blur(10px);
+	padding: 60px 10px 10px 10px;
+	z-index: 2;
 }
 
 .navbar button {
@@ -20,12 +34,14 @@
 	background-color: transparent;
 	border: none;
 	font-size: 1.8em;
+	z-index: 100;
+	position: relative;
 }
 
 .navbar .links-container {
-	display: none;
+	/* display: none; */
 	position: absolute;
-	/* display: flex; */
+	display: flex;
 	gap: 20px;
 	flex-direction: column;
 	background-color: white;

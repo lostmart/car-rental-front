@@ -9,10 +9,13 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
 import { RxHamburgerMenu } from "react-icons/rx"
 
 import UrlLink from "../interfaces/UrlLink"
+import { useState } from "react"
 
 export default function Root() {
+	const [showMenu, setShowMenu] = useState(false)
+
 	const handleClick = () => {
-		console.log("clicked !!")
+		setShowMenu(() => !showMenu)
 	}
 	const socialList: UrlLink[] = [
 		{
@@ -34,7 +37,7 @@ export default function Root() {
 
 			<header>
 				<Nav className="navbar" role="navigation">
-					<ul>
+					<ul className="desktop-nav">
 						<li>
 							<Link to="/">Home</Link>
 						</li>
@@ -48,6 +51,17 @@ export default function Root() {
 							</div>
 						</li>
 					</ul>
+
+					{showMenu && (
+						<ul className="mobile-nav">
+							<li>
+								<Link to="/">Home</Link>
+							</li>
+							<li>
+								<Link to="/about">About</Link>
+							</li>
+						</ul>
+					)}
 					<ButtonComp
 						className="navBtn"
 						children={<RxHamburgerMenu />}
