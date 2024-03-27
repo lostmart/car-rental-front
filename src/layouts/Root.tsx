@@ -3,7 +3,9 @@ import Nav from "../components/ui-parts/NavBar"
 import TopNav from "../components/ui-parts/TopNav"
 import FooterComponent from "../components/FooterComponent"
 
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
+import { FaFacebookF, FaTwitter, FaInstagram, FaCross } from "react-icons/fa"
+
+import { RxHamburgerMenu } from "react-icons/rx"
 
 import UrlLink from "../interfaces/UrlLink"
 
@@ -42,6 +44,9 @@ export default function Root() {
 							</div>
 						</li>
 					</ul>
+					<button>
+						<RxHamburgerMenu />
+					</button>
 				</Nav>
 			</header>
 			<main>

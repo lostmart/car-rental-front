@@ -7,11 +7,18 @@
 }
 
 .navbar ul {
-	display: flex;
+	display: none;
 	padding: 10px;
 	gap: 40px;
 	max-width: 900px;
 	margin: auto;
+}
+
+.navbar button {
+	padding: 12px;
+	float: right;
+	background-color: transparent;
+	border: none;
 }
 
 .navbar .links-container {
