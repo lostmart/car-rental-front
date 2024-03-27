@@ -15,10 +15,11 @@
 }
 
 .navbar button {
-	padding: 12px;
+	padding: 12px 20px;
 	float: right;
 	background-color: transparent;
 	border: none;
+	font-size: 1.8em;
 }
 
 .navbar .links-container {
