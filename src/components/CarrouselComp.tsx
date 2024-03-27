@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -7,14 +6,19 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 
-import carOne from "../imgs/car01.jpg"
+import { carouselImages } from "../assets/carouselImages"
 
 // import required modules
 import { Pagination, Navigation } from "swiper/modules"
 
+type ImageSource = {
+	src: string
+	alt: string
+}
+
 export default function App() {
 	return (
-		<>
+		<div>
 			<Swiper
 				pagination={{
 					type: "progressbar",
@@ -25,18 +29,14 @@ export default function App() {
 				modules={[Pagination, Navigation]}
 				className="mySwiper"
 			>
-				<SwiperSlide>
-					<img src={carOne} alt="" style={{maxWidth:"100%"}} />
-				</SwiperSlide>
-				<SwiperSlide>Slide 2</SwiperSlide>
-				<SwiperSlide>Slide 3</SwiperSlide>
-				<SwiperSlide>Slide 4</SwiperSlide>
-				<SwiperSlide>Slide 5</SwiperSlide>
-				<SwiperSlide>Slide 6</SwiperSlide>
-				<SwiperSlide>Slide 7</SwiperSlide>
-				<SwiperSlide>Slide 8</SwiperSlide>
-				<SwiperSlide>Slide 9</SwiperSlide>
+				{carouselImages.map((img: ImageSource, i: number) => {
+					return (
+						<SwiperSlide key={i}>
+							<img src={img.src} alt={img.alt} style={{ width: "100%" }} />
+						</SwiperSlide>
+					)
+				})}
 			</Swiper>
-		</>
+		</div>
 	)
 }

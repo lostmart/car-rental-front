@@ -1,11 +1,17 @@
 .navbar {
-	position: relative;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	background: #292a2d52;
+	backdrop-filter: blur(2px);
 }
 
 .navbar ul {
 	display: flex;
 	padding: 10px;
 	gap: 40px;
+	max-width: 900px;
+	margin: auto;
 }
 
 .navbar .links-container {
