@@ -7,6 +7,7 @@ import ButtonComp from "../components/ui-units/ButtonComp"
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
 
 import { RxHamburgerMenu } from "react-icons/rx"
+import { IoClose } from "react-icons/io5"
 
 import UrlLink from "../interfaces/UrlLink"
 import { useState } from "react"
@@ -52,21 +53,27 @@ export default function Root() {
 						</li>
 					</ul>
 
-					{showMenu && (
-						<ul className="mobile-nav">
-							<li>
-								<Link to="/">Home</Link>
-							</li>
-							<li>
-								<Link to="/about">About</Link>
-							</li>
-						</ul>
+					<ul className={`mobile-nav ${!showMenu && "mobile-nav-close"}`}>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="/about">About</Link>
+						</li>
+					</ul>
+					{!showMenu ? (
+						<ButtonComp
+							className="navBtn"
+							children={<RxHamburgerMenu />}
+							onClick={handleClick}
+						/>
+					) : (
+						<ButtonComp
+							className="navBtn active-button"
+							children={<IoClose />}
+							onClick={handleClick}
+						/>
 					)}
-					<ButtonComp
-						className="navBtn"
-						children={<RxHamburgerMenu />}
-						onClick={handleClick}
-					/>
 				</Nav>
 			</header>
 			<main>
