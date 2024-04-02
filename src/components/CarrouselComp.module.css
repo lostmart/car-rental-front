@@ -1,0 +1,59 @@
+.mySwiper img {
+	width: 100%;
+}
+
+.mySwiper .swiperSlide {
+	position: relative;
+}
+
+.mySwiper figure {
+	display: flex;
+	align-items: center;
+}
+.mySwiper figcaption {
+	position: absolute;
+	padding: 35px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: 13px;
+	width: 85%;
+	box-shadow: 0 4px 30px rgb(0 0 0 / 50%);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(5px);
+	border: 1px solid rgb(255 255 255 / 23%);
+}
+
+.mySwiper h2 {
+	font-size: 2.3em;
+    text-shadow: 1px 1px 3px #000000c2;
+}
+
+.mySwiper p {
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+}
+
+.mySwiper button {
+	border: none;
+	border-radius: 2px;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 16px;
+	transition: 0.3s ease-out;
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	vertical-align: middle;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.1),
+		0 1px 5px 0 rgba(0, 0, 0, 0.18);
+	background-color: #192a30;
+}
+
+.mySwiper button:hover {
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12),
+		0 3px 1px -1px rgba(0, 0, 0, 0.2);
+	background-color: #111c21;
+}

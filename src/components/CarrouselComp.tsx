@@ -1,3 +1,5 @@
+import styles from "./CarrouselComp.module.css"
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -16,7 +18,7 @@ type ImageSource = {
 	alt: string
 }
 
-export default function App() {
+const Carousel: React.FC = () => {
 	return (
 		<div>
 			<Swiper
@@ -25,14 +27,24 @@ export default function App() {
 				}}
 				navigation={true}
 				loop={true}
-				autoplay={true}
+				autoplay={{
+					delay: 2500,
+					disableOnInteraction: false,
+				}}
 				modules={[Pagination, Navigation]}
-				className="mySwiper"
+				className={styles.mySwiper}
 			>
-				{carouselImages.map((img: ImageSource, i: number) => {
+				{carouselImages.map((img: ImageSource) => {
 					return (
-						<SwiperSlide key={i}>
-							<img src={img.src} alt={img.alt} style={{ width: "100%" }} />
+						<SwiperSlide key={img.src} className={styles.swiperSlide}>
+							<figure>
+								<img src={img.src} alt={img.alt} />
+								<figcaption>
+									<h2>La vida es deliciosa !</h2>
+									<p>Nunca temas a volar!</p>
+									<button>Click me</button>
+								</figcaption>
+							</figure>
 						</SwiperSlide>
 					)
 				})}
@@ -40,3 +52,5 @@ export default function App() {
 		</div>
 	)
 }
+
+export default Carousel
