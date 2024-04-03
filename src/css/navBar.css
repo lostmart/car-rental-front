@@ -65,7 +65,12 @@
 }
 
 .navbar span {
-	transition: transform 350ms ease-in-out, width 280ms ease-in-out;
+	transition: transform 350ms ease-in-out, width 280ms ease-in-out,
+		background-color 350ms;
+}
+
+.navbar .active-button span {
+	background-color: #192a30;
 }
 
 .navbar .active-button span:first-child {
