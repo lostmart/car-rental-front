@@ -12,6 +12,8 @@ import { useState } from "react"
 export default function Root() {
 	const [showMenu, setShowMenu] = useState(false)
 
+	const buttonClass = showMenu ? "navBtn active-button" : "navBtn"
+
 	const linesBtn = () => {
 		return (
 			<>
@@ -70,7 +72,7 @@ export default function Root() {
 					</ul>
 
 					<ButtonComp
-						className="navBtn"
+						className={buttonClass}
 						children={linesBtn()}
 						onClick={handleClick}
 					/>

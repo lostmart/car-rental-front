@@ -49,18 +49,35 @@
 	font-size: 1.8em;
 	z-index: 100;
 	position: relative;
+	cursor: pointer;
 }
 
 .navbar span {
 	display: block;
 	height: 2px;
-	width: 30px;
+	width: 23px;
 	background-color: white;
-	margin-top: 2px;
+	margin: 5px;
 }
 
 .navbar .active-button {
-	color: #192a30;
+	background-color: #292a2d52;
+}
+
+.navbar span {
+	transition: transform 350ms ease-in-out, width 280ms ease-in-out;
+}
+
+.navbar .active-button span:first-child {
+	transform: rotateZ(45deg) translate(4px, 4px);
+}
+
+.navbar .active-button span:nth-child(2) {
+	width: 0;
+}
+
+.navbar .active-button span:last-child {
+	transform: rotateZ(-45deg) translate(6px, -6px);
 }
 
 .navbar .links-container {
