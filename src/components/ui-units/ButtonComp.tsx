@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 type ButtonProps = {
 	className: string
 	onClick: () => void
-	children: string | ReactNode
+	children: ReactNode
 }
 
 export default function ButtonComp({

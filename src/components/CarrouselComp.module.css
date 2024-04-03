@@ -13,11 +13,12 @@
 .mySwiper figcaption {
 	position: absolute;
 	padding: 35px;
+	top: 3.3em;
 	left: 50%;
 	transform: translateX(-50%);
 	background: rgba(255, 255, 255, 0.12);
 	border-radius: 13px;
-	width: 85%;
+	width: 92%;
 	box-shadow: 0 4px 30px rgb(0 0 0 / 50%);
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(5px);
@@ -25,8 +26,8 @@
 }
 
 .mySwiper h2 {
-	font-size: 2.3em;
-    text-shadow: 1px 1px 3px #000000c2;
+	font-size: 1.7em;
+	text-shadow: 1px 1px 3px #000000c2;
 }
 
 .mySwiper p {

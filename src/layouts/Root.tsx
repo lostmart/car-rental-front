@@ -6,14 +6,21 @@ import FooterComponent from "../components/FooterComponent"
 import ButtonComp from "../components/ui-units/ButtonComp"
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
 
-import { RxHamburgerMenu } from "react-icons/rx"
-import { IoClose } from "react-icons/io5"
-
 import UrlLink from "../interfaces/UrlLink"
 import { useState } from "react"
 
 export default function Root() {
 	const [showMenu, setShowMenu] = useState(false)
+
+	const linesBtn = () => {
+		return (
+			<>
+				<span></span>
+				<span></span>
+				<span></span>
+			</>
+		)
+	}
 
 	const handleClick = () => {
 		setShowMenu(() => !showMenu)
@@ -61,19 +68,12 @@ export default function Root() {
 							<Link to="/about">About</Link>
 						</li>
 					</ul>
-					{!showMenu ? (
-						<ButtonComp
-							className="navBtn"
-							children={<RxHamburgerMenu />}
-							onClick={handleClick}
-						/>
-					) : (
-						<ButtonComp
-							className="navBtn active-button"
-							children={<IoClose />}
-							onClick={handleClick}
-						/>
-					)}
+
+					<ButtonComp
+						className="navBtn"
+						children={linesBtn()}
+						onClick={handleClick}
+					/>
 				</Nav>
 			</header>
 			<main>
