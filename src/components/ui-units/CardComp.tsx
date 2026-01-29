@@ -1,5 +1,12 @@
+import {
+	Card,
+	CardBody,
+	Image,
+	Heading,
+	Text,
+	CardProps as ChakraCardProps,
+} from "@chakra-ui/react"
 import { ReactNode } from "react"
-import styles from "./CardComp.module.css"
 
 type CardProps = {
 	title?: string
@@ -8,8 +15,7 @@ type CardProps = {
 	imageAlt?: string
 	children?: ReactNode
 	onClick?: () => void
-	className?: string
-}
+} & ChakraCardProps
 
 export default function CardComp({
 	title,
@@ -18,22 +24,30 @@ export default function CardComp({
 	imageAlt = "Card image",
 	children,
 	onClick,
-	className = "",
+	...chakraProps
 }: CardProps) {
-	const cardClasses = `${styles.card} ${className}`.trim()
-
 	return (
-		<div className={cardClasses} onClick={onClick}>
-			{image && (
-				<div className={styles.imageWrapper}>
-					<img src={image} alt={imageAlt} className={styles.image} />
-				</div>
-			)}
-			<div className={styles.content}>
-				{title && <h3 className={styles.title}>{title}</h3>}
-				{description && <p className={styles.description}>{description}</p>}
+		<Card
+			onClick={onClick}
+			cursor={onClick ? "pointer" : "default"}
+			_hover={onClick ? { shadow: "lg", transform: "translateY(-2px)" } : {}}
+			transition="all 0.2s"
+			{...chakraProps}
+		>
+			{image && <Image src={image} alt={imageAlt} objectFit="cover" />}
+			<CardBody>
+				{title && (
+					<Heading size="md" mb={2}>
+						{title}
+					</Heading>
+				)}
+				{description && (
+					<Text color="gray.600" mb={4}>
+						{description}
+					</Text>
+				)}
 				{children}
-			</div>
-		</div>
+			</CardBody>
+		</Card>
 	)
 }

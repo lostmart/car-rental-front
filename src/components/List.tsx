@@ -1,9 +1,12 @@
+import { Box, Text } from "@chakra-ui/react"
 import Car from "../interfaces/Car"
 
 const List = ({ year }: Car) => {
-	// const { name, year, available, price, imgUrl } = props.car
-
-	return <div>the year is {year}</div>
+	return (
+		<Box>
+			<Text>the year is {year}</Text>
+		</Box>
+	)
 }
 
 export default List

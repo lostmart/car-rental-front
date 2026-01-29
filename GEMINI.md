@@ -1,105 +1,86 @@
 # Rental Car Application
 
-This is a React and TypeScript application designed for a rental car service. It leverages modern frontend technologies to provide a dynamic user experience, including an interactive image carousel and a structured approach to managing car listings.
+# CLAUDE.md
 
-## Technologies Used
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-*   **React**: A powerful JavaScript library for building interactive user interfaces.
-*   **TypeScript**: A superset of JavaScript that adds static types, improving code quality and maintainability.
-*   **Vite**: A next-generation frontend tooling that provides an extremely fast development experience and optimized build process.
-*   **React Router DOM**: Used for declarative routing within the application, enabling seamless navigation between different pages.
-*   **Swiper**: A highly customizable and modern touch slider that powers the dynamic image carousel on the homepage.
-*   **React Icons**: Provides a collection of popular icon libraries as React components, used for consistent UI elements.
-*   **ESLint**: A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript code, ensuring code quality and adherence to best practices.
+## Build and Development Commands
 
-## Features
+- `npm run dev` - Start development server with Vite
+- `npm run build` - TypeScript compile then Vite build
+- `npm run lint` - ESLint with TypeScript rules (zero warnings allowed)
+- `npm run preview` - Preview production build
 
-*   **Dynamic Image Carousel**: The homepage features an interactive image carousel displaying attractive visuals, likely showcasing available cars or promotions. (Powered by Swiper).
-*   **Page Navigation**: The application includes routing for different sections, such as a Home page, an About page, and a Card Demo page, managed by React Router DOM.
-*   **Structured Car Data**: A clear interface (`Car.ts`) is defined for car objects, indicating a structured approach to managing and displaying rental car information (name, year, availability, price, image URL).
+## Tech Stack
 
-## Getting Started
+- React 18 + TypeScript + Vite
+- react-router-dom for client-side routing
+- Swiper for carousel/slider components
+- react-icons for icon components
+- CSS Modules for component-scoped styling (`.module.css`)
 
-Follow these instructions to set up and run the project locally.
+## Architecture
 
-### Prerequisites
+**Routing**: Configured in [main.tsx](src/main.tsx) using react-router-dom's `createBrowserRouter`. All routes use the Root layout with page components as children.
 
-*   Node.js (LTS version recommended)
-*   npm or yarn
+**Layout**: [Root.tsx](src/layouts/Root.tsx) provides the shared layout (TopNav, NavBar, Footer) with `<Outlet />` for page content. Manages mobile menu state.
 
-### Installation
+**Component Organization**:
+- `src/components/ui-parts/` - Navigation elements (NavBar, TopNav, SocialButtons)
+- `src/components/ui-units/` - Small reusable components (ButtonComp)
+- `src/components/` - Feature components (CarrouselComp, FooterComponent, List)
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [repository-url]
-    cd rental-car
-    ```
-    *(Note: Replace `[repository-url]` with the actual URL of your repository.)*
+**Interfaces**: TypeScript types in `src/interfaces/` - `Car` for car data, `UrlLink` for navigation links with icons.
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or yarn install
-    ```
+**Styling**: Chakra UI with CSS Modules for component-scoped styling.
 
-### Running the Development Server
+## Code Style
 
-To start the development server with hot-module reloading:
+- Use strict TypeScript with interfaces in `src/interfaces/`
+- Export interfaces as `export default interface Name`
+- Component props should be typed with clear, descriptive interfaces
+- Use `ReactNode` for children props
+- Default props should use TypeScript default parameters, not defaultProps
 
-```bash
-npm run dev
-# or yarn dev
-```
+- Use CSS Modules for component-scoped styles: `import styles from "./ComponentName.module.css"`
+- Global styles go in `src/css/` or `src/index.css`
+- Class names in JSX: `className={styles.container}`
+- Combine styles dynamically: `const cardClasses = \`${styles.card} ${className}\`.trim()`
 
-The application will typically be available at `http://localhost:5173`.
+- Use error boundaries for route-level error handling (ErrorPage component exists)
+- Implement proper TypeScript types to catch errors at compile time
+- No try-catch patterns currently established - add as needed for async operations
 
-### Building for Production
+- Use function components with React hooks
+- Export components as `export default function ComponentName()`
+- Component names should be PascalCase
+- Props interface should be named `ComponentNameProps` or `ComponentProps`
+- Destructure props in function parameters for cleaner code
 
-To build the application for production:
+- Always run `npm run lint` before committing - zero warnings policy
+- Use TypeScript `strict` mode - zero warnings policy
+- No unused variables or parameters allowed
+- Prefer explicit return types for complex functions
+- Use React.StrictMode in development
 
-```bash
-npm run build
-# or yarn build
-```
+- Use functional components with hooks
+- Implement proper key props for lists
+- Use Link component from react-router-dom for navigation
+- Prefer controlled components with proper state management
+- Use children prop for composition patterns
 
-This command will compile the TypeScript code and bundle the assets into the `dist` directory.
+## Important Notes
 
-### Linting
+- This project has no testing framework - consider adding Vitest for modern React testing
+- No build optimization configured - Vite handles most optimizations automatically
+- ESLint is strict with zero warnings policy
+- TypeScript strict mode enabled - all type errors must be resolved
+- CSS Modules for styling - no global class pollution
 
-To run ESLint and check for code quality issues:
+## Development Workflow
 
-```bash
-npm run lint
-# or yarn lint
-```
-
-## Project Structure
-
-The project follows a standard React application structure, organized for clarity and maintainability:
-
-```
-├── public/                 # Static assets
-├── src/
-│   ├── assets/             # Static assets like images or local data
-│   │   └── carouselImages.ts # Data for the image carousel
-│   ├── components/         # Reusable UI components
-│   │   ├── CarrouselComp.tsx # The image carousel component
-│   │   └── ...
-│   ├── css/                # Global CSS styles
-│   ├── interfaces/         # TypeScript interfaces for data structures
-│   │   └── Car.ts          # Interface defining a Car object
-│   ├── layouts/            # Layout components (e.g., Root layout)
-│   │   └── Root.tsx
-│   ├── pages/              # Main application pages
-│   │   ├── HomePage.tsx    # The main landing page
-│   │   ├── AboutPage.tsx
-│   │   └── ErrorPage.tsx
-│   │   └── CardDemoPage.tsx
-│   ├── main.tsx            # Entry point of the React application
-│   └── index.css           # Global styles
-├── .eslintrc.cjs           # ESLint configuration
-├── package.json            # Project dependencies and scripts
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite build configuration
-└── README.md               # Project README file
-```
+1. Always run `npm run lint` before committing - zero warnings policy
+2. Use `npm run dev` for development with hot reload
+3. Build process includes TypeScript compilation - fix type errors first
+4. No automated tests currently - manual testing required
+5. CSS changes should be component-scoped using CSS Modules

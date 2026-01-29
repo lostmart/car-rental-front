@@ -1,32 +1,33 @@
-import { Outlet, Link } from "react-router-dom"
-import Nav from "../components/ui-parts/NavBar"
+import { Box } from "@chakra-ui/react"
+import { Outlet } from "react-router-dom"
 import TopNav from "../components/ui-parts/TopNav"
+import Header from "../components/ui-parts/Header"
 import FooterComponent from "../components/FooterComponent"
 
-import ButtonComp from "../components/ui-units/ButtonComp"
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"
 
 import UrlLink from "../interfaces/UrlLink"
-import { useState } from "react"
+import { NavigationItem } from "../interfaces/NavigationItem"
 
 export default function Root() {
-	const [showMenu, setShowMenu] = useState(false)
+	const navigationItems: NavigationItem[] = [
+		{
+			label: "Home",
+			path: "/",
+		},
+		{
+			label: "Pages",
+			path: "/pages",
+			children: [
+				{ label: "About", path: "/about" },
+				{ label: "Drivers", path: "/about" },
+				{ label: "Pricing Plans", path: "/about" },
+				{ label: "Booking Form", path: "/about" },
+				{ label: "Card Demo", path: "/card-demo" },
+			],
+		},
+	]
 
-	const buttonClass = showMenu ? "navBtn active-button" : "navBtn"
-
-	const linesBtn = () => {
-		return (
-			<>
-				<span></span>
-				<span></span>
-				<span></span>
-			</>
-		)
-	}
-
-	const handleClick = () => {
-		setShowMenu(() => !showMenu)
-	}
 	const socialList: UrlLink[] = [
 		{
 			urlLink: "https://www.facebook.com/",
@@ -42,50 +43,13 @@ export default function Root() {
 		},
 	]
 	return (
-		<>
+		<Box minH="100vh" display="flex" flexDirection="column">
 			<TopNav />
-
-			<header>
-				<Nav className="navbar" role="navigation">
-					<ul className="desktop-nav">
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<span>Pages</span>
-							<div className="links-container">
-								<Link to="/about">About</Link>
-								<Link to="/about">Drivers</Link>
-								<Link to="/about">Pricing Plans</Link>
-								<Link to="/about">Booking Form</Link>
-								<Link to="/card-demo">Card Demo</Link>
-							</div>
-						</li>
-					</ul>
-
-					<ul className={`mobile-nav ${!showMenu && "mobile-nav-close"}`}>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/about">About</Link>
-						</li>
-						<li>
-							<Link to="/card-demo">Card Demo</Link>
-						</li>
-					</ul>
-
-					<ButtonComp
-						className={buttonClass}
-						children={linesBtn()}
-						onClick={handleClick}
-					/>
-				</Nav>
-			</header>
-			<main>
+			<Header navigationItems={navigationItems} />
+			<Box as="main" flex="1">
 				<Outlet />
-			</main>
+			</Box>
 			<FooterComponent socialList={socialList} />
-		</>
+		</Box>
 	)
 }

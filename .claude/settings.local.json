@@ -1,11 +1,17 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git mv:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run lint)",
+      "Bash(npm --version)",
+      "Bash(test:*)",
+      "Bash(npm info:*)"
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "agent-router"
-  ],
-  "permissions": {
-    "allow": [
-      "Bash(git mv:*)"
-    ]
-  }
+  ]
 }

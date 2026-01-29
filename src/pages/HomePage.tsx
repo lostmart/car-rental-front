@@ -1,9 +1,10 @@
+import { Box } from "@chakra-ui/react"
 import CarrouselComp from "../components/CarrouselComp"
 
 export default function HomePage() {
 	return (
-		<div>
+		<Box>
 			<CarrouselComp />
-		</div>
+		</Box>
 	)
 }

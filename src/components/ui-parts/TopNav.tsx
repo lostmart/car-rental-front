@@ -1,3 +1,4 @@
+import { Box, Container, HStack, Link, Icon } from "@chakra-ui/react"
 import {
 	FaPhone,
 	FaEnvelope,
@@ -38,20 +39,28 @@ export default function TopNav() {
 	]
 
 	return (
-		<div className="top-header">
-			<div className="container">
-				<ul>
-					{urlList.map((liItem) => (
-						<li key={liItem.urlLink}>
-							<a href={liItem.urlLink}>
-								<liItem.icon style={{ marginRight: "10px" }} />
-								{liItem.text}
-							</a>
-						</li>
-					))}
-				</ul>
-				<SocialButtons socialList={socialList} />
-			</div>
-		</div>
+		<Box bg="gray.100" py={2}>
+			<Container maxW="container.xl">
+				<HStack justify="space-between" flexWrap="wrap">
+					<HStack spacing={6} flexWrap="wrap">
+						{urlList.map((item) => (
+							<Link
+								key={item.urlLink}
+								href={item.urlLink}
+								display="flex"
+								alignItems="center"
+								fontSize="sm"
+								color="gray.700"
+								_hover={{ color: "blue.600" }}
+							>
+								<Icon as={item.icon} mr={2} />
+								{item.text}
+							</Link>
+						))}
+					</HStack>
+					<SocialButtons socialList={socialList} />
+				</HStack>
+			</Container>
+		</Box>
 	)
 }

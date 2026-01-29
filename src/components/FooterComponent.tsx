@@ -1,22 +1,33 @@
+import {
+	Box,
+	Container,
+	HStack,
+	Text,
+	VStack,
+	Divider,
+} from "@chakra-ui/react"
 import UrlLink from "../interfaces/UrlLink"
+import SocialButtons from "./ui-parts/SocialButtons"
 
-type SocialButtonsProps = {
+type FooterComponentProps = {
 	socialList: UrlLink[]
 }
 
-const FooterComponent: React.FC<SocialButtonsProps> = ({ socialList }) => {
+const FooterComponent: React.FC<FooterComponentProps> = ({ socialList }) => {
+	const currentYear = new Date().getFullYear()
+
 	return (
-		<footer>
-			<ul>
-				{socialList.map((liItem) => (
-					<li key={liItem.urlLink}>
-						<a href={liItem.urlLink}>
-							<liItem.icon style={{ marginRight: "10px" }} />
-						</a>
-					</li>
-				))}
-			</ul>
-		</footer>
+		<Box as="footer" bg="gray.800" color="white" py={8}>
+			<Container maxW="container.xl">
+				<VStack spacing={6}>
+					<SocialButtons socialList={socialList} />
+					<Divider borderColor="gray.600" />
+					<Text fontSize="sm" color="gray.400">
+						© {currentYear} Car Rental. All rights reserved.
+					</Text>
+				</VStack>
+			</Container>
+		</Box>
 	)
 }
 

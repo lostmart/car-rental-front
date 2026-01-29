@@ -1,7 +1,5 @@
-import React from "react"
+import { HStack, IconButton } from "@chakra-ui/react"
 import UrlLink from "../../interfaces/UrlLink"
-
-
 
 type SocialButtonsProps = {
 	socialList: UrlLink[]
@@ -9,15 +7,23 @@ type SocialButtonsProps = {
 
 const SocialButtons: React.FC<SocialButtonsProps> = ({ socialList }) => {
 	return (
-		<ul>
-			{socialList.map((liItem) => (
-				<li key={liItem.urlLink}>
-					<a href={liItem.urlLink}>
-						<liItem.icon style={{ marginRight: "10px" }} />
-					</a>
-				</li>
+		<HStack spacing={2}>
+			{socialList.map((item) => (
+				<IconButton
+					key={item.urlLink}
+					as="a"
+					href={item.urlLink}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`Visit our ${item.urlLink} page`}
+					icon={<item.icon />}
+					size="sm"
+					variant="ghost"
+					colorScheme="gray"
+					_hover={{ bg: "gray.200" }}
+				/>
 			))}
-		</ul>
+		</HStack>
 	)
 }
 
