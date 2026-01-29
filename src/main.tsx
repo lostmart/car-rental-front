@@ -9,6 +9,7 @@ import "./index.css"
 import ErrorPage from "./pages/ErrorPage"
 import AboutPage from "./pages/AboutPage"
 import HomePage from "./pages/HomePage"
+import CardDemoPage from "./pages/CardDemoPage"
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 			{
 				path: "/about",
 				element: <AboutPage />,
+			},
+			{
+				path: "/card-demo",
+				element: <CardDemoPage />,
 			},
 		],
 	},

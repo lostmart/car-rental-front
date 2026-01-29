@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "agent-router"
+  ],
+  "enableAllProjectMcpServers": true
+}

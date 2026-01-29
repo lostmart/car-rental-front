@@ -18,7 +18,9 @@ type ImageSource = {
 	alt: string
 }
 
+
 const Carousel: React.FC = () => {
+	
 	return (
 		<div>
 			<Swiper

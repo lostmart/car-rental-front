@@ -58,6 +58,7 @@ export default function Root() {
 								<Link to="/about">Drivers</Link>
 								<Link to="/about">Pricing Plans</Link>
 								<Link to="/about">Booking Form</Link>
+								<Link to="/card-demo">Card Demo</Link>
 							</div>
 						</li>
 					</ul>
@@ -68,6 +69,9 @@ export default function Root() {
 						</li>
 						<li>
 							<Link to="/about">About</Link>
+						</li>
+						<li>
+							<Link to="/card-demo">Card Demo</Link>
 						</li>
 					</ul>
 

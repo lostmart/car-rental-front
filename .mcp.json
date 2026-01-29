@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "agent-router": {
+      "command": "node",
+      "args": ["C:\\Users\\lostm\\Documents\\code_me\\agent-router-mcp\\build\\index.js"]
+    }
+  }
+}
