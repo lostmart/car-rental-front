@@ -1,5 +1,7 @@
 # Car Rental Platform
 
+[![CI Tests](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml/badge.svg)](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml)
+
 A modern, responsive car rental web application built with React, TypeScript, and Vite. Features an elegant UI with smooth animations, interactive carousels, and reusable component architecture.
 
 ## Table of Contents
@@ -31,7 +33,9 @@ A modern, responsive car rental web application built with React, TypeScript, an
 - **Carousel**: Swiper
 - **Icons**: React Icons
 - **Styling**: CSS Modules + Global CSS
+- **Testing**: Vitest + React Testing Library + Playwright
 - **Linting**: ESLint with TypeScript rules
+- **CI/CD**: GitHub Actions
 
 ## Getting Started
 
@@ -91,6 +95,23 @@ npm run lint
 
 Note: Zero warnings are enforced (`--max-warnings 0`).
 
+### Testing
+
+Run unit tests with Vitest:
+
+```bash
+# Run tests in watch mode
+npm test
+
+# Run tests once with coverage
+npm run test:coverage -- --run
+
+# Open interactive test UI
+npm run test:ui
+```
+
+Coverage reports are generated in the `coverage/` directory. Open `coverage/index.html` in a browser to view detailed coverage reports.
+
 ## Project Structure
 
 ```
@@ -137,6 +158,9 @@ rental-car/
 | `npm run build` | Build for production (TypeScript + Vite) |
 | `npm run lint` | Run ESLint with TypeScript rules |
 | `npm run preview` | Preview production build locally |
+| `npm test` | Run unit tests in watch mode |
+| `npm run test:coverage` | Run unit tests with coverage report |
+| `npm run test:ui` | Open Vitest interactive UI |
 
 ## Components
 

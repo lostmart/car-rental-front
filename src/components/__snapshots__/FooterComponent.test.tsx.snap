@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Social Buttons > renders correctly for empty list 1`] = `
+<div>
+  <ul />
+</div>
+`;
+
+exports[`Social Buttons > renders correctly for populated list 1`] = `
+<div>
+  <ul>
+    <li>
+      <a>
+        <facebook
+          style="margin-right: 10px;"
+        />
+      </a>
+    </li>
+    <li>
+      <a>
+        <twitter
+          style="margin-right: 10px;"
+        />
+      </a>
+    </li>
+  </ul>
+</div>
+`;
