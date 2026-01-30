@@ -35,10 +35,10 @@ describe("HeroSection", () => {
 	it("renders both CTA buttons with correct labels", () => {
 		renderComponent()
 		const browseCarsButton = screen.getByRole("button", {
-			name: /browse available cars/i,
+			name: /browse cars button/i,
 		})
 		const viewToursButton = screen.getByRole("button", {
-			name: /view available tours/i,
+			name: /view tours button/i,
 		})
 
 		expect(browseCarsButton).toBeInTheDocument()

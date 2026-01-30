@@ -1,6 +1,7 @@
 import { Box, Heading, Text, Button, Image } from "@chakra-ui/react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Navigation, Autoplay, A11y } from "swiper/modules"
+import { motion, useReducedMotion } from "framer-motion"
 
 // Import Swiper styles
 import "swiper/css"
@@ -46,14 +47,20 @@ export interface CarouselProps {
 /**
  * Carousel Component
  *
- * A fully accessible, responsive carousel component built with Swiper.
- * Supports autoplay, navigation, pagination, and customizable overlay content.
+ * A fully accessible, responsive carousel component built with Swiper and Framer Motion.
+ * Supports autoplay, navigation, pagination, entrance animations, and hover effects.
  *
  * Accessibility:
  * - Semantic section element with aria-label
  * - A11y module for screen reader support
  * - Keyboard navigation support
  * - Descriptive alt text for images
+ * - Respects prefers-reduced-motion setting
+ *
+ * Animations:
+ * - Entrance fade-in and slide-up effect
+ * - Hover scale and shadow elevation
+ * - Overlay content staggered animations
  *
  * @example
  * ```tsx
@@ -82,6 +89,42 @@ const Carousel: React.FC<CarouselProps> = ({
 	maxImageHeight = "460px",
 	ariaLabel = "Featured carousel",
 }) => {
+	// Check user's motion preference for accessibility
+	const prefersReducedMotion = useReducedMotion()
+
+	// Animation variants for slide entrance
+	const slideVariants = {
+		hidden: {
+			opacity: prefersReducedMotion ? 1 : 0,
+			y: prefersReducedMotion ? 0 : 20,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: prefersReducedMotion ? 0 : 0.6,
+				ease: "easeOut",
+			},
+		},
+	}
+
+	// Animation variants for overlay content (staggered)
+	const overlayVariants = {
+		hidden: {
+			opacity: prefersReducedMotion ? 1 : 0,
+			y: prefersReducedMotion ? 0 : 10,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: prefersReducedMotion ? 0 : 0.5,
+				ease: "easeOut",
+				staggerChildren: prefersReducedMotion ? 0 : 0.1,
+			},
+		},
+	}
+
 	return (
 		<Box as="section" aria-label={ariaLabel} w="100%">
 			<Swiper
@@ -99,10 +142,24 @@ const Carousel: React.FC<CarouselProps> = ({
 				}}
 				modules={[Pagination, Navigation, Autoplay, A11y]}
 			>
-				{images.map((img: ImageSource) => {
+				{images.map((img: ImageSource, index: number) => {
 					return (
 						<SwiperSlide key={img.src}>
-							<Box position="relative" display="flex" alignItems="center">
+							<Box
+								as={motion.div}
+								variants={slideVariants}
+								initial="hidden"
+								whileInView="visible"
+								viewport={{ once: true, amount: 0.3 }}
+								whileHover={prefersReducedMotion ? {} : {
+									scale: 1.02,
+									transition: { duration: 0.3 },
+								}}
+								position="relative"
+								display="flex"
+								alignItems="center"
+								style={{ cursor: "pointer" }}
+							>
 								<Image
 									src={img.src}
 									alt={img.alt}
@@ -113,6 +170,16 @@ const Carousel: React.FC<CarouselProps> = ({
 								/>
 								{showOverlay && (overlayHeading || overlayText || overlayButtonLabel) && (
 									<Box
+										as={motion.div}
+										variants={overlayVariants}
+										initial="hidden"
+										whileInView="visible"
+										viewport={{ once: true }}
+										whileHover={prefersReducedMotion ? {} : {
+											scale: 1.05,
+											boxShadow: "0 8px 40px rgba(0, 0, 0, 0.7)",
+											transition: { duration: 0.3 },
+										}}
 										position="absolute"
 										top="52%"
 										left="50%"
@@ -130,7 +197,8 @@ const Carousel: React.FC<CarouselProps> = ({
 									>
 										{overlayHeading && (
 											<Heading
-												as="h2"
+												as={motion.h2}
+												variants={overlayVariants}
 												size="xl"
 												mb={4}
 												textShadow="1px 1px 3px rgba(0, 0, 0, 0.76)"
@@ -140,6 +208,8 @@ const Carousel: React.FC<CarouselProps> = ({
 										)}
 										{overlayText && (
 											<Text
+												as={motion.p}
+												variants={overlayVariants}
 												fontSize="lg"
 												mb={4}
 												color="accent.700"
@@ -150,10 +220,17 @@ const Carousel: React.FC<CarouselProps> = ({
 										)}
 										{overlayButtonLabel && (
 											<Button
+												as={motion.button}
+												variants={overlayVariants}
 												bg="accent.700"
 												color="white"
 												onClick={onOverlayButtonClick}
 												_hover={{ bg: "accent.800", shadow: "lg" }}
+												whileHover={prefersReducedMotion ? {} : {
+													scale: 1.1,
+													transition: { duration: 0.2 },
+												}}
+												whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
 												size="md"
 												aria-label={`${overlayButtonLabel} button`}
 											>
