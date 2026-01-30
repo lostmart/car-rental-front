@@ -161,7 +161,7 @@ export default function Header({ navigationItems, className = "", logo }: Header
 								to={item.path}
 								fontSize="lg"
 								fontWeight="600"
-								color="gray.800"
+								color="accent.700"
 								onClick={onClose}
 								_hover={{ opacity: 0.7 }}
 							>

@@ -16,7 +16,7 @@ export default function ErrorPage() {
 	return (
 		<Container maxW="container.md" py={20}>
 			<VStack spacing={6} align="start">
-				<Heading as="h1" size="2xl" color="red.500">
+				<Heading as="h1" size="2xl" color="secondary.500">
 					Oops!
 				</Heading>
 				<Text fontSize="lg">
@@ -35,7 +35,7 @@ export default function ErrorPage() {
 				<ChakraLink
 					as={RouterLink}
 					to="/"
-					color="blue.500"
+					color="primary.500"
 					fontSize="lg"
 					_hover={{ textDecoration: "underline" }}
 				>

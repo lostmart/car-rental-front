@@ -17,12 +17,12 @@ const FooterComponent: React.FC<FooterComponentProps> = ({ socialList }) => {
 	const currentYear = new Date().getFullYear()
 
 	return (
-		<Box as="footer" bg="gray.800" color="white" py={8}>
+		<Box as="footer" bg="accent.700" color="white" py={8}>
 			<Container maxW="container.xl">
 				<VStack spacing={6}>
 					<SocialButtons socialList={socialList} />
-					<Divider borderColor="gray.600" />
-					<Text fontSize="sm" color="gray.400">
+					<Divider borderColor="neutral.600" />
+					<Text fontSize="sm" color="neutral.400">
 						© {currentYear} Car Rental. All rights reserved.
 					</Text>
 				</VStack>

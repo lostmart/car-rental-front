@@ -16,10 +16,10 @@ export default function CardDemoPage() {
 	return (
 		<Container maxW="container.xl" py={8}>
 			<VStack spacing={6} align="center" mb={12}>
-				<Heading as="h1" size="2xl" color="gray.800">
+				<Heading as="h1" size="2xl" color="accent.700">
 					Card Component Demo
 				</Heading>
-				<Text fontSize="lg" color="gray.600">
+				<Text fontSize="lg" color="neutral.600">
 					Responsive cards with smooth hover effects
 				</Text>
 			</VStack>
@@ -28,11 +28,11 @@ export default function CardDemoPage() {
 				<Heading
 					as="h2"
 					size="lg"
-					color="gray.800"
+					color="accent.700"
 					mb={6}
 					pb={2}
 					borderBottom="2px solid"
-					borderColor="orange.500"
+					borderColor="primary.500"
 					display="inline-block"
 				>
 					Basic Cards
@@ -60,11 +60,11 @@ export default function CardDemoPage() {
 				<Heading
 					as="h2"
 					size="lg"
-					color="gray.800"
+					color="accent.700"
 					mb={6}
 					pb={2}
 					borderBottom="2px solid"
-					borderColor="orange.500"
+					borderColor="primary.500"
 					display="inline-block"
 				>
 					Cards with Images
@@ -98,11 +98,11 @@ export default function CardDemoPage() {
 				<Heading
 					as="h2"
 					size="lg"
-					color="gray.800"
+					color="accent.700"
 					mb={6}
 					pb={2}
 					borderBottom="2px solid"
-					borderColor="orange.500"
+					borderColor="primary.500"
 					display="inline-block"
 				>
 					Custom Content Cards
@@ -111,23 +111,28 @@ export default function CardDemoPage() {
 					<CardComp title="Special Offer">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="orange.500">
+								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
 									$49
 								</Text>
-								<Text fontSize="md" color="gray.600">
+								<Text fontSize="md" color="neutral.600">
 									/day
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="gray.700">✓ Unlimited mileage</ListItem>
-								<ListItem color="gray.700">✓ Full insurance</ListItem>
-								<ListItem color="gray.700">✓ 24/7 support</ListItem>
+								<ListItem color="accent.700">✓ Unlimited mileage</ListItem>
+								<ListItem color="accent.700">✓ Full insurance</ListItem>
+								<ListItem color="accent.700">✓ 24/7 support</ListItem>
 							</List>
 							<Button
-								colorScheme="orange"
+								bg="primary.500"
+								color="white"
 								width="full"
 								mt={2}
-								_hover={{ transform: "translateY(-2px)", shadow: "lg" }}
+								_hover={{
+									bg: "primary.600",
+									transform: "translateY(-2px)",
+									shadow: "lg",
+								}}
 							>
 								Book Now
 							</Button>
@@ -137,23 +142,28 @@ export default function CardDemoPage() {
 					<CardComp title="Premium Package">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="orange.500">
+								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
 									$89
 								</Text>
-								<Text fontSize="md" color="gray.600">
+								<Text fontSize="md" color="neutral.600">
 									/day
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="gray.700">✓ GPS Navigation</ListItem>
-								<ListItem color="gray.700">✓ Child seat included</ListItem>
-								<ListItem color="gray.700">✓ Priority pickup</ListItem>
+								<ListItem color="accent.700">✓ GPS Navigation</ListItem>
+								<ListItem color="accent.700">✓ Child seat included</ListItem>
+								<ListItem color="accent.700">✓ Priority pickup</ListItem>
 							</List>
 							<Button
-								colorScheme="orange"
+								bg="primary.500"
+								color="white"
 								width="full"
 								mt={2}
-								_hover={{ transform: "translateY(-2px)", shadow: "lg" }}
+								_hover={{
+									bg: "primary.600",
+									transform: "translateY(-2px)",
+									shadow: "lg",
+								}}
 							>
 								Book Now
 							</Button>
@@ -163,23 +173,28 @@ export default function CardDemoPage() {
 					<CardComp title="Weekend Deal">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="orange.500">
+								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
 									$129
 								</Text>
-								<Text fontSize="md" color="gray.600">
+								<Text fontSize="md" color="neutral.600">
 									/weekend
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="gray.700">✓ 3-day rental</ListItem>
-								<ListItem color="gray.700">✓ Free upgrade</ListItem>
-								<ListItem color="gray.700">✓ Roadside assistance</ListItem>
+								<ListItem color="accent.700">✓ 3-day rental</ListItem>
+								<ListItem color="accent.700">✓ Free upgrade</ListItem>
+								<ListItem color="accent.700">✓ Roadside assistance</ListItem>
 							</List>
 							<Button
-								colorScheme="orange"
+								bg="primary.500"
+								color="white"
 								width="full"
 								mt={2}
-								_hover={{ transform: "translateY(-2px)", shadow: "lg" }}
+								_hover={{
+									bg: "primary.600",
+									transform: "translateY(-2px)",
+									shadow: "lg",
+								}}
 							>
 								Book Now
 							</Button>
@@ -192,11 +207,11 @@ export default function CardDemoPage() {
 				<Heading
 					as="h2"
 					size="lg"
-					color="gray.800"
+					color="accent.700"
 					mb={6}
 					pb={2}
 					borderBottom="2px solid"
-					borderColor="orange.500"
+					borderColor="primary.500"
 					display="inline-block"
 				>
 					Different Layouts

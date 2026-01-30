@@ -2,10 +2,19 @@
 @import url("./css/navBar.css");
 
 :root {
-	/* colors  */
+	/* Legacy colors - preserved for backward compatibility */
 	--main-bg: #292a2d;
 	--bg-alt: #21242a;
 	--main-text-clr: rgba(255, 255, 255, 0.87);
+
+	/* Design System Theme Colors - Luxury Car Rental Palette */
+	--color-primary: #D4AF37; /* Gold */
+	--color-primary-light: #C5A572; /* Lighter Gold */
+	--color-secondary: #800020; /* Burgundy */
+	--color-secondary-dark: #A0153E; /* Lighter Burgundy */
+	--color-neutral: #FAF9F6; /* Cream */
+	--color-neutral-light: #F5F5DC; /* Beige */
+	--color-accent: #2C2C2C; /* Dark Charcoal */
 
 	font-family: "Quicksand", sans-serif;
 	color-scheme: light dark;
@@ -23,9 +32,31 @@
 	box-sizing: border-box;
 }
 
+/* ========================================
+   DESIGN SYSTEM ENHANCEMENTS
+   ======================================== */
+
+/* Smooth Scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Base Link Styles with Design System */
 a {
 	text-decoration: none;
 	color: inherit;
+	transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: var(--color-primary);
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
 li {
@@ -120,4 +151,162 @@ footer ul {
 	header {
 		margin-top: 77px;
 	}
+}
+
+/* ========================================
+   BUTTON RESET & ACCESSIBILITY
+   ======================================== */
+
+/* Base Button Reset - Removes default browser styling */
+button {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+	color: inherit;
+}
+
+/* Button Focus States for Accessibility */
+button:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* Respect User's Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Skip to Main Content Link (for screen readers) */
+.skip-to-main {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: var(--color-accent);
+	color: var(--color-neutral);
+	padding: 8px 16px;
+	text-decoration: none;
+	z-index: 100;
+	border-radius: 0 0 4px 0;
+}
+
+.skip-to-main:focus {
+	top: 0;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+/* Utility Classes - Complement Chakra UI */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Container Max-Width Variants */
+.container-sm {
+	max-width: 640px;
+	margin: auto;
+	padding: 0 1rem;
+}
+
+.container-md {
+	max-width: 768px;
+	margin: auto;
+	padding: 0 1rem;
+}
+
+.container-lg {
+	max-width: 1024px;
+	margin: auto;
+	padding: 0 1rem;
+}
+
+.container-xl {
+	max-width: 1280px;
+	margin: auto;
+	padding: 0 1rem;
+}
+
+/* Responsive Text Utilities */
+@media only screen and (max-width: 480px) {
+	.hide-mobile {
+		display: none !important;
+	}
+}
+
+@media only screen and (min-width: 481px) {
+	.show-mobile-only {
+		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.hide-tablet {
+		display: none !important;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.show-tablet-only {
+		display: none !important;
+	}
+}
+
+/* ========================================
+   LUXURY DESIGN SYSTEM HELPERS
+   ======================================== */
+
+/* Gradient Overlays for Premium Feel */
+.gradient-overlay-gold {
+	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.gradient-overlay-burgundy {
+	background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+}
+
+/* Elevation Shadows - Luxury Aesthetic */
+.elevation-sm {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.elevation-md {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.elevation-lg {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.elevation-xl {
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);
 }

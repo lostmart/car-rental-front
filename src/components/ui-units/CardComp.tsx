@@ -42,7 +42,7 @@ export default function CardComp({
 					</Heading>
 				)}
 				{description && (
-					<Text color="gray.600" mb={4}>
+					<Text color="neutral.600" mb={4}>
 						{description}
 					</Text>
 				)}
