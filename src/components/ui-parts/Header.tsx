@@ -1,6 +1,5 @@
 import {
 	Box,
-	Flex,
 	HStack,
 	IconButton,
 	Menu,
@@ -46,24 +45,26 @@ import { NavigationItem, HeaderProps } from "../../interfaces/NavigationItem"
  * <Header navigationItems={navItems} />
  * ```
  */
-export default function Header({ navigationItems, className = "", logo }: HeaderProps) {
+export default function Header({
+	navigationItems,
+	className = "",
+	logo,
+}: HeaderProps) {
 	const { isOpen, onToggle, onClose } = useDisclosure()
 
 	// Flatten navigation items for mobile menu
-	const flattenNavigationItems = (items: NavigationItem[]): NavigationItem[] => {
+	const flattenNavigationItems = (
+		items: NavigationItem[],
+	): NavigationItem[] => {
 		return items.flatMap((item) =>
-			item.children ? [item, ...item.children] : [item]
+			item.children ? [item, ...item.children] : [item],
 		)
 	}
 
 	const mobileNavItems = flattenNavigationItems(navigationItems)
 
 	return (
-		<Box
-			as="header"
-			position="relative"
-			className={className}
-		>
+		<Box as="header" position="relative" className={className}>
 			<Box
 				as="nav"
 				position="absolute"

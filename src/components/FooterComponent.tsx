@@ -1,11 +1,4 @@
-import {
-	Box,
-	Container,
-	HStack,
-	Text,
-	VStack,
-	Divider,
-} from "@chakra-ui/react"
+import { Box, Container, Text, VStack, Divider } from "@chakra-ui/react"
 import UrlLink from "../interfaces/UrlLink"
 import SocialButtons from "./ui-parts/SocialButtons"
 
