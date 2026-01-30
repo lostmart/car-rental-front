@@ -131,10 +131,14 @@ const Carousel: React.FC<CarouselProps> = ({
 				pagination={enablePagination ? { type: paginationType } : false}
 				navigation={enableNavigation}
 				loop={enableLoop}
-				autoplay={enableAutoplay ? {
-					delay: autoplayDelay,
-					disableOnInteraction: false,
-				} : false}
+				autoplay={
+					enableAutoplay
+						? {
+								delay: autoplayDelay,
+								disableOnInteraction: false,
+							}
+						: false
+				}
 				a11y={{
 					prevSlideMessage: "Previous slide",
 					nextSlideMessage: "Next slide",
@@ -142,7 +146,7 @@ const Carousel: React.FC<CarouselProps> = ({
 				}}
 				modules={[Pagination, Navigation, Autoplay, A11y]}
 			>
-				{images.map((img: ImageSource, _index: number) => {
+				{images.map((img: ImageSource) => {
 					return (
 						<SwiperSlide key={img.src}>
 							<Box
@@ -151,10 +155,14 @@ const Carousel: React.FC<CarouselProps> = ({
 								initial="hidden"
 								whileInView="visible"
 								viewport={{ once: true, amount: 0.3 }}
-								whileHover={prefersReducedMotion ? {} : {
-									scale: 1.02,
-									transition: { duration: 0.3 },
-								}}
+								whileHover={
+									prefersReducedMotion
+										? {}
+										: {
+												scale: 1.02,
+												transition: { duration: 0.3 },
+											}
+								}
 								position="relative"
 								display="flex"
 								alignItems="center"
@@ -168,77 +176,86 @@ const Carousel: React.FC<CarouselProps> = ({
 									objectFit="cover"
 									loading="lazy"
 								/>
-								{showOverlay && (overlayHeading || overlayText || overlayButtonLabel) && (
-									<Box
-										as={motion.div}
-										variants={overlayVariants}
-										initial="hidden"
-										whileInView="visible"
-										viewport={{ once: true }}
-										whileHover={prefersReducedMotion ? {} : {
-											scale: 1.05,
-											boxShadow: "0 8px 40px rgba(0, 0, 0, 0.7)",
-											transition: { duration: 0.3 },
-										}}
-										position="absolute"
-										top="52%"
-										left="50%"
-										transform="translate(-50%, -50%)"
-										bg="rgba(255, 255, 255, 0.12)"
-										backdropFilter="blur(4px)"
-										borderRadius="13px"
-										width="92%"
-										maxW="600px"
-										p={8}
-										boxShadow="0 4px 30px rgba(0, 0, 0, 0.5)"
-										border="1px solid rgba(255, 255, 255, 0.23)"
-										textAlign="center"
-										color="white"
-									>
-										{overlayHeading && (
-											<Heading
-												as={motion.h2}
-												variants={overlayVariants}
-												size="xl"
-												mb={4}
-												textShadow="1px 1px 3px rgba(0, 0, 0, 0.76)"
-											>
-												{overlayHeading}
-											</Heading>
-										)}
-										{overlayText && (
-											<Text
-												as={motion.p}
-												variants={overlayVariants}
-												fontSize="lg"
-												mb={4}
-												color="accent.700"
-												textShadow="1px 1px 2px rgba(233, 233, 233, 0.76)"
-											>
-												{overlayText}
-											</Text>
-										)}
-										{overlayButtonLabel && (
-											<Button
-												as={motion.button}
-												variants={overlayVariants}
-												bg="accent.700"
-												color="white"
-												onClick={onOverlayButtonClick}
-												_hover={{ bg: "accent.800", shadow: "lg" }}
-												whileHover={prefersReducedMotion ? {} : {
-													scale: 1.1,
-													transition: { duration: 0.2 },
-												}}
-												whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-												size="md"
-												aria-label={`${overlayButtonLabel} button`}
-											>
-												{overlayButtonLabel}
-											</Button>
-										)}
-									</Box>
-								)}
+								{showOverlay &&
+									(overlayHeading || overlayText || overlayButtonLabel) && (
+										<Box
+											as={motion.div}
+											variants={overlayVariants}
+											initial="hidden"
+											whileInView="visible"
+											viewport={{ once: true }}
+											whileHover={
+												prefersReducedMotion
+													? {}
+													: {
+															scale: 1.05,
+															boxShadow: "0 8px 40px rgba(0, 0, 0, 0.7)",
+															transition: { duration: 0.3 },
+														}
+											}
+											position="absolute"
+											top="52%"
+											left="50%"
+											transform="translate(-50%, -50%)"
+											bg="rgba(255, 255, 255, 0.12)"
+											backdropFilter="blur(4px)"
+											borderRadius="13px"
+											width="92%"
+											maxW="600px"
+											p={8}
+											boxShadow="0 4px 30px rgba(0, 0, 0, 0.5)"
+											border="1px solid rgba(255, 255, 255, 0.23)"
+											textAlign="center"
+											color="white"
+										>
+											{overlayHeading && (
+												<Heading
+													as={motion.h2}
+													variants={overlayVariants}
+													size="xl"
+													mb={4}
+													textShadow="1px 1px 3px rgba(0, 0, 0, 0.76)"
+												>
+													{overlayHeading}
+												</Heading>
+											)}
+											{overlayText && (
+												<Text
+													as={motion.p}
+													variants={overlayVariants}
+													fontSize="lg"
+													mb={4}
+													color="accent.700"
+													textShadow="1px 1px 2px rgba(233, 233, 233, 0.76)"
+												>
+													{overlayText}
+												</Text>
+											)}
+											{overlayButtonLabel && (
+												<Button
+													as={motion.button}
+													variants={overlayVariants}
+													bg="accent.700"
+													color="white"
+													onClick={onOverlayButtonClick}
+													_hover={{ bg: "accent.800", shadow: "lg" }}
+													whileHover={
+														prefersReducedMotion
+															? {}
+															: {
+																	scale: 1.1,
+																	transition: { duration: 0.2 },
+																}
+													}
+													whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+													size="md"
+													aria-label={`${overlayButtonLabel} button`}
+												>
+													{overlayButtonLabel}
+												</Button>
+											)}
+										</Box>
+									)}
 							</Box>
 						</SwiperSlide>
 					)

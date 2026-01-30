@@ -26,9 +26,6 @@ export default function Root() {
 			path: "/pages",
 			children: [
 				{ label: "About", path: "/about" },
-				{ label: "Drivers", path: "/about" },
-				{ label: "Pricing Plans", path: "/about" },
-				{ label: "Booking Form", path: "/about" },
 				{ label: "Card Demo", path: "/card-demo" },
 			],
 		},
