@@ -1,5 +1,5 @@
 import { Box, Heading, Text, Button, VStack, HStack, Icon } from "@chakra-ui/react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import { useRef } from "react"
 
@@ -21,6 +21,8 @@ export interface HeroSectionProps {
 	onSecondaryClick?: () => void
 	/** Background image URL */
 	backgroundImage?: string
+	/** Enable/disable parallax background effect (default: true) */
+	enableParallax?: boolean
 	/** Show scroll indicator */
 	showScrollIndicator?: boolean
 	/** Scroll indicator text */
@@ -57,6 +59,7 @@ export interface HeroSectionProps {
  *   secondaryButtonLabel="View Tours"
  *   onPrimaryClick={() => navigate('/cars')}
  *   backgroundImage="/images/hero-bg.jpg"
+ *   enableParallax={true}
  * />
  * ```
  */
@@ -68,12 +71,16 @@ export default function HeroSection({
 	onPrimaryClick,
 	onSecondaryClick,
 	backgroundImage,
+	enableParallax = true,
 	showScrollIndicator = true,
 	scrollIndicatorText = "Scroll to explore",
 	height = "100vh",
 	maxWidth = "1200px",
 }: HeroSectionProps = {}) {
 	const containerRef = useRef<HTMLDivElement>(null)
+
+	// Check user's motion preference for accessibility
+	const prefersReducedMotion = useReducedMotion()
 
 	// Parallax scroll effect
 	const { scrollY } = useScroll({
@@ -83,42 +90,49 @@ export default function HeroSection({
 
 	// Transform scroll position to background position for parallax
 	// Background moves slower (50% speed) than scroll for depth effect
-	const backgroundY = useTransform(scrollY, [0, 1000], [0, 500])
+	// Disabled if user prefers reduced motion or enableParallax is false
+	const backgroundY = useTransform(
+		scrollY,
+		[0, 1000],
+		(prefersReducedMotion || !enableParallax) ? [0, 0] : [0, 500]
+	)
 
 	// Animation variants for staggered children
+	// Respects prefers-reduced-motion by removing animations
 	const containerVariants = {
-		hidden: { opacity: 0 },
+		hidden: { opacity: prefersReducedMotion ? 1 : 0 },
 		visible: {
 			opacity: 1,
 			transition: {
-				staggerChildren: 0.2,
-				delayChildren: 0.1,
+				staggerChildren: prefersReducedMotion ? 0 : 0.2,
+				delayChildren: prefersReducedMotion ? 0 : 0.1,
 			},
 		},
 	}
 
 	const itemVariants = {
 		hidden: {
-			opacity: 0,
-			y: 50
+			opacity: prefersReducedMotion ? 1 : 0,
+			y: prefersReducedMotion ? 0 : 50
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 0.8,
+				duration: prefersReducedMotion ? 0 : 0.8,
 				ease: "easeOut",
 			},
 		},
 	}
 
 	// Scroll indicator bounce animation
+	// Disabled if user prefers reduced motion
 	const scrollIndicatorVariants = {
 		animate: {
-			y: [0, 10, 0],
+			y: prefersReducedMotion ? [0] : [0, 10, 0],
 			transition: {
-				duration: 1.5,
-				repeat: Infinity,
+				duration: prefersReducedMotion ? 0 : 1.5,
+				repeat: prefersReducedMotion ? 0 : Infinity,
 				ease: "easeInOut",
 			},
 		},

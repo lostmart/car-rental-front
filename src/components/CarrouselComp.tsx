@@ -109,6 +109,7 @@ const Carousel: React.FC<CarouselProps> = ({
 									width="100%"
 									maxH={maxImageHeight}
 									objectFit="cover"
+									loading="lazy"
 								/>
 								{showOverlay && (overlayHeading || overlayText || overlayButtonLabel) && (
 									<Box

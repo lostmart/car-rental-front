@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, Link as ChakraLink, VStack, Code } from "@chakra-ui/react"
+import { Container, Heading, Text, Link as ChakraLink, VStack, Code } from "@chakra-ui/react"
 import { useRouteError, Link as RouterLink } from "react-router-dom"
 
 interface ErrorType {
