@@ -10,7 +10,7 @@ import {
 	ListItem,
 	Button,
 } from "@chakra-ui/react"
-import CardComp from "../components/ui-units/CardComp"
+import Card from "../components/common/Card/Card"
 
 export default function CardDemoPage() {
 	return (
@@ -38,17 +38,17 @@ export default function CardDemoPage() {
 					Basic Cards
 				</Heading>
 				<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-					<CardComp
+					<Card
 						title="Economy Car"
 						description="Perfect for city driving and daily commutes. Fuel-efficient and easy to park."
 						onClick={() => alert("Economy car clicked!")}
 					/>
-					<CardComp
+					<Card
 						title="Luxury Sedan"
 						description="Premium comfort with advanced features. Ideal for business trips and special occasions."
 						onClick={() => alert("Luxury sedan clicked!")}
 					/>
-					<CardComp
+					<Card
 						title="SUV Adventure"
 						description="Spacious and powerful. Great for family trips and outdoor adventures."
 						onClick={() => alert("SUV clicked!")}
@@ -70,21 +70,21 @@ export default function CardDemoPage() {
 					Cards with Images
 				</Heading>
 				<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-					<CardComp
+					<Card
 						title="Sports Car"
 						description="High performance and sleek design. Experience the thrill of the road."
 						image="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop"
 						imageAlt="Red sports car"
 						onClick={() => console.log("Sports car selected")}
 					/>
-					<CardComp
+					<Card
 						title="Electric Vehicle"
 						description="Eco-friendly and cost-effective. Zero emissions, maximum efficiency."
 						image="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400&h=300&fit=crop"
 						imageAlt="Electric car"
 						onClick={() => console.log("EV selected")}
 					/>
-					<CardComp
+					<Card
 						title="Convertible"
 						description="Feel the wind in your hair. Perfect for sunny days and coastal drives."
 						image="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=300&fit=crop"
@@ -108,7 +108,7 @@ export default function CardDemoPage() {
 					Custom Content Cards
 				</Heading>
 				<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-					<CardComp title="Special Offer">
+					<Card title="Special Offer">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
 								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
@@ -137,9 +137,9 @@ export default function CardDemoPage() {
 								Book Now
 							</Button>
 						</VStack>
-					</CardComp>
+					</Card>
 
-					<CardComp title="Premium Package">
+					<Card title="Premium Package">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
 								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
@@ -168,9 +168,9 @@ export default function CardDemoPage() {
 								Book Now
 							</Button>
 						</VStack>
-					</CardComp>
+					</Card>
 
-					<CardComp title="Weekend Deal">
+					<Card title="Weekend Deal">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
 								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
@@ -199,7 +199,7 @@ export default function CardDemoPage() {
 								Book Now
 							</Button>
 						</VStack>
-					</CardComp>
+					</Card>
 				</SimpleGrid>
 			</Box>
 
@@ -217,13 +217,13 @@ export default function CardDemoPage() {
 					Different Layouts
 				</Heading>
 				<SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-					<CardComp
+					<Card
 						title="Road Trip Essentials"
 						description="Everything you need for a perfect journey. Our cars come fully equipped with modern amenities and safety features to ensure your trip is comfortable and secure."
 						image="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=300&fit=crop"
 						imageAlt="Car on road"
 					/>
-					<CardComp
+					<Card
 						title="Corporate Fleet"
 						description="Professional vehicles for business needs. Reliable, presentable, and efficient options for your corporate transportation requirements."
 						image="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=300&fit=crop"

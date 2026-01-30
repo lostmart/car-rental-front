@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import { ChakraProvider } from "@chakra-ui/react"
 import { describe, it, expect } from "vitest"
 import HeroSection from "./HeroSection"
-import theme from "../theme"
+import theme from "../../../theme"
 
 /**
  * Test suite for HeroSection component

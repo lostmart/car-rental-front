@@ -1,12 +1,12 @@
 import { Box, Container, Text, VStack, Divider } from "@chakra-ui/react"
-import UrlLink from "../interfaces/UrlLink"
-import SocialButtons from "./ui-parts/SocialButtons"
+import UrlLink from "../../../interfaces/UrlLink"
+import SocialButtons from "../SocialButtons/SocialButtons"
 
-type FooterComponentProps = {
+type FooterProps = {
 	socialList: UrlLink[]
 }
 
-const FooterComponent: React.FC<FooterComponentProps> = ({ socialList }) => {
+const Footer: React.FC<FooterProps> = ({ socialList }) => {
 	const currentYear = new Date().getFullYear()
 
 	return (
@@ -24,4 +24,4 @@ const FooterComponent: React.FC<FooterComponentProps> = ({ socialList }) => {
 	)
 }
 
-export default FooterComponent
+export default Footer

@@ -1,5 +1,5 @@
 import { HStack, IconButton } from "@chakra-ui/react"
-import UrlLink from "../../interfaces/UrlLink"
+import UrlLink from "../../../interfaces/UrlLink"
 
 /**
  * Props for the SocialButtons component

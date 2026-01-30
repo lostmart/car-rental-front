@@ -1,4 +1,4 @@
-import { Button, ButtonProps as ChakraButtonProps } from "@chakra-ui/react"
+import { Button as ChakraButton, ButtonProps as ChakraButtonProps } from "@chakra-ui/react"
 import { ReactNode } from "react"
 
 type ButtonProps = {
@@ -6,14 +6,14 @@ type ButtonProps = {
 	children: ReactNode
 } & ChakraButtonProps
 
-export default function ButtonComp({
+export default function Button({
 	children,
 	onClick,
 	...chakraProps
 }: ButtonProps) {
 	return (
-		<Button onClick={onClick} {...chakraProps}>
+		<ChakraButton onClick={onClick} {...chakraProps}>
 			{children}
-		</Button>
+		</ChakraButton>
 	)
 }

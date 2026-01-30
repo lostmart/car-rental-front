@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
-import TopNav from "../components/ui-parts/TopNav"
-import Header from "../components/ui-parts/Header"
-import FooterComponent from "../components/FooterComponent"
+import TopNav from "../components/layout/TopNav/TopNav"
+import Header from "../components/layout/Header/Header"
+import Footer from "../components/layout/Footer/Footer"
 
 import {
 	FaPhone,
@@ -68,7 +68,7 @@ export default function Root() {
 			<Box as="main" flex="1">
 				<Outlet />
 			</Box>
-			<FooterComponent socialList={socialList} />
+			<Footer socialList={socialList} />
 		</Box>
 	)
 }

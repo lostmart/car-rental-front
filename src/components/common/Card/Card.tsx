@@ -1,5 +1,5 @@
 import {
-	Card,
+	Card as ChakraCard,
 	CardBody,
 	Image,
 	Heading,
@@ -17,7 +17,7 @@ type CardProps = {
 	onClick?: () => void
 } & ChakraCardProps
 
-export default function CardComp({
+export default function Card({
 	title,
 	description,
 	image,
@@ -27,7 +27,7 @@ export default function CardComp({
 	...chakraProps
 }: CardProps) {
 	return (
-		<Card
+		<ChakraCard
 			onClick={onClick}
 			cursor={onClick ? "pointer" : "default"}
 			_hover={onClick ? { shadow: "lg", transform: "translateY(-2px)" } : {}}
@@ -48,6 +48,6 @@ export default function CardComp({
 				)}
 				{children}
 			</CardBody>
-		</Card>
+		</ChakraCard>
 	)
 }

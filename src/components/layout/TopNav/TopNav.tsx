@@ -1,6 +1,6 @@
 import { Box, Container, HStack, Link, Icon } from "@chakra-ui/react"
-import SocialButtons from "./SocialButtons"
-import UrlLink from "../../interfaces/UrlLink"
+import SocialButtons from "../SocialButtons/SocialButtons"
+import UrlLink from "../../../interfaces/UrlLink"
 
 /**
  * Props for the TopNav component

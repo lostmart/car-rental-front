@@ -1,18 +1,18 @@
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { ChakraProvider } from "@chakra-ui/react"
-import FooterComponent from "./FooterComponent"
-import UrlLink from "../interfaces/UrlLink"
+import Footer from "./Footer"
+import UrlLink from "../../../interfaces/UrlLink"
 import { FaFacebook, FaTwitter } from "react-icons/fa"
-import theme from "../theme"
+import theme from "../../../theme"
 
 const renderWithChakra = (component: React.ReactElement) => {
 	return render(<ChakraProvider theme={theme}>{component}</ChakraProvider>)
 }
 
-describe("FooterComponent", () => {
+describe("Footer", () => {
 	it("renders correctly with empty social list", () => {
-		const { container } = renderWithChakra(<FooterComponent socialList={[]} />)
+		const { container } = renderWithChakra(<Footer socialList={[]} />)
 		expect(container).toMatchSnapshot()
 	})
 
@@ -22,14 +22,14 @@ describe("FooterComponent", () => {
 			{ urlLink: "https://www.twitter.com", icon: FaTwitter },
 		]
 		const { container } = renderWithChakra(
-			<FooterComponent socialList={links} />
+			<Footer socialList={links} />
 		)
 		expect(container).toMatchSnapshot()
 	})
 
 	it("displays copyright text with current year", () => {
 		const currentYear = new Date().getFullYear()
-		renderWithChakra(<FooterComponent socialList={[]} />)
+		renderWithChakra(<Footer socialList={[]} />)
 
 		const copyrightText = screen.getByText(
 			`© ${currentYear} Car Rental. All rights reserved.`
@@ -38,7 +38,7 @@ describe("FooterComponent", () => {
 	})
 
 	it("renders footer element", () => {
-		const { container } = renderWithChakra(<FooterComponent socialList={[]} />)
+		const { container } = renderWithChakra(<Footer socialList={[]} />)
 		const footer = container.querySelector("footer")
 		expect(footer).toBeInTheDocument()
 	})
@@ -49,7 +49,7 @@ describe("FooterComponent", () => {
 			{ urlLink: "https://www.twitter.com", icon: FaTwitter },
 		]
 		const { container } = renderWithChakra(
-			<FooterComponent socialList={links} />
+			<Footer socialList={links} />
 		)
 
 		const anchors = container.querySelectorAll("a")
@@ -57,7 +57,7 @@ describe("FooterComponent", () => {
 	})
 
 	it("renders no social links when socialList is empty", () => {
-		const { container } = renderWithChakra(<FooterComponent socialList={[]} />)
+		const { container } = renderWithChakra(<Footer socialList={[]} />)
 
 		const anchors = container.querySelectorAll("a")
 		expect(anchors).toHaveLength(0)

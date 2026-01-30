@@ -8,7 +8,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 
-import { type ImageSource } from "../assets/carouselImages"
+import { type ImageSource } from "../../../assets/carouselImages"
 
 /**
  * Props for the Carousel component
@@ -142,7 +142,7 @@ const Carousel: React.FC<CarouselProps> = ({
 				}}
 				modules={[Pagination, Navigation, Autoplay, A11y]}
 			>
-				{images.map((img: ImageSource, index: number) => {
+				{images.map((img: ImageSource, _index: number) => {
 					return (
 						<SwiperSlide key={img.src}>
 							<Box

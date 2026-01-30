@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { render } from "@testing-library/react"
 import SocialButtons from "./SocialButtons"
-import UrlLink from "../../interfaces/UrlLink"
+import UrlLink from "../../../interfaces/UrlLink"
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"
 
 describe('Social Buttons', () => {

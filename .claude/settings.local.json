@@ -20,7 +20,9 @@
       "Bash(powershell -Command \"npm test -- --run --reporter=verbose 2>&1 | Select-Object -First 100\")",
       "Bash(powershell -Command \"npm test -- --run 2>&1 | Select-Object -First 50\")",
       "Bash(powershell -Command \"npm test -- --run -u 2>&1 | Select-Object -First 30\")",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(tree:*)",
+      "Bash(tee:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

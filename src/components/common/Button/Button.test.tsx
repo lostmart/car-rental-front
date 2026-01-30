@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import ButtonComp from './ButtonComp';
+import Button from './Button';
 import { describe, it, expect } from 'vitest';
 
-describe('ButtonComp', () => {
+describe('Button', () => {
   it('renders with correct text content', () => {
-    render(<ButtonComp onClick={() => {}} className="">Test Button</ButtonComp>);
+    render(<Button onClick={() => {}} className="">Test Button</Button>);
     expect(screen.getByRole('button', { name: /Test Button/i })).toBeInTheDocument();
   });
 });

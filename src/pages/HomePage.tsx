@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react"
-import HeroSection from "../components/HeroSection"
-import CarrouselComp from "../components/CarrouselComp"
+import HeroSection from "../components/features/HeroSection/HeroSection"
+import Carousel from "../components/features/Carousel/Carousel"
 import { carouselImages } from "../assets/carouselImages"
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
 				primaryButtonLabel="Browse Cars"
 				secondaryButtonLabel="View Tours"
 			/>
-			<CarrouselComp
+			<Carousel
 				images={carouselImages}
 				overlayHeading="La vida es deliciosa !"
 				overlayText="Nunca temas a volar!"

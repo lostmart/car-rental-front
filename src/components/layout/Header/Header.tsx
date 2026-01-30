@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import { Link as RouterLink } from "react-router-dom"
-import { NavigationItem, HeaderProps } from "../../interfaces/NavigationItem"
+import { NavigationItem, HeaderProps } from "../../../interfaces/NavigationItem"
 
 /**
  * Header Component
