@@ -1,127 +1,58 @@
 import { extendTheme } from "@chakra-ui/react"
 
-// Luxury color palette for rental car application
-const colors = {
-	primary: {
-		50: "#FBF7EF",
-		100: "#F5ECD7",
-		200: "#EAD9AF",
-		300: "#DFC687",
-		400: "#D4B35F",
-		500: "#D4AF37", // Main gold
-		600: "#C5A572", // Lighter gold
-		700: "#A88C2F",
-		800: "#7D6823",
-		900: "#534417",
-	},
-	secondary: {
-		50: "#F9E5EA",
-		100: "#EDB8C5",
-		200: "#E08BA0",
-		300: "#D45E7B",
-		400: "#C73156",
-		500: "#A0153E", // Lighter burgundy
-		600: "#800020", // Main burgundy
-		700: "#66001A",
-		800: "#4D0013",
-		900: "#33000D",
-	},
-	neutral: {
-		50: "#FFFFFF",
-		100: "#FAF9F6", // Cream
-		200: "#F5F5DC", // Off-white/Beige
-		300: "#E8E8D8",
-		400: "#DCDCC4",
-		500: "#CFCFB0",
-		600: "#A5A58D",
-		700: "#7B7B6A",
-		800: "#525246",
-		900: "#282823",
-	},
-	accent: {
-		50: "#F5F5F5",
-		100: "#D9D9D9",
-		200: "#BDBDBD",
-		300: "#A1A1A1",
-		400: "#858585",
-		500: "#696969",
-		600: "#4D4D4D",
-		700: "#2C2C2C", // Dark charcoal
-		800: "#1F1F1F",
-		900: "#121212",
-	},
-}
+// Import foundations
+import colors from "./foundations/colors"
+import typography from "./foundations/typography"
+import spacing from "./foundations/spacing"
 
-// Typography configuration
-const fonts = {
-	heading: "'Playfair Display', serif",
-	body: "'Inter', sans-serif",
-}
+// Import component themes
+import Button from "./components/Button"
+import Heading from "./components/Heading"
+import Input from "./components/Input"
+import Text from "./components/Text"
+import Link from "./components/Link"
 
-// Global styles
+// Global styles using semantic colors
 const styles = {
 	global: {
 		body: {
-			bg: "neutral.100",
-			color: "accent.700",
+			bg: "surface.offWhite",
+			color: "text.primary",
 			fontFamily: "body",
 		},
 		"*::placeholder": {
-			color: "neutral.500",
+			color: "text.muted",
 		},
 		"*, *::before, *::after": {
 			borderColor: "neutral.300",
+		},
+		// Link styles
+		a: {
+			color: "text.link",
+			_hover: {
+				color: "text.linkHover",
+				textDecoration: "underline",
+			},
 		},
 	},
 }
 
 // Component style overrides
 const components = {
-	Button: {
+	Button,
+	Heading,
+	Input,
+	Text,
+	Link,
+	Container: {
 		baseStyle: {
-			fontWeight: "semibold",
-			borderRadius: "md",
-		},
-		variants: {
-			solid: {
-				bg: "primary.500",
-				color: "white",
-				_hover: {
-					bg: "primary.600",
-					_disabled: {
-						bg: "primary.500",
-					},
-				},
-			},
-			outline: {
-				borderColor: "primary.500",
-				color: "primary.500",
-				_hover: {
-					bg: "primary.50",
-				},
-			},
-			ghost: {
-				color: "primary.500",
-				_hover: {
-					bg: "primary.50",
-				},
-			},
-		},
-		defaultProps: {
-			variant: "solid",
+			maxW: "container.xl",
+			px: { base: 4, md: 6, lg: 8 },
 		},
 	},
-	Heading: {
+	Box: {
 		baseStyle: {
-			fontFamily: "heading",
-			fontWeight: "bold",
-			color: "accent.700",
-		},
-	},
-	Text: {
-		baseStyle: {
-			fontFamily: "body",
-			color: "accent.700",
+			// Enable textStyle prop on Box components
 		},
 	},
 }
@@ -129,9 +60,36 @@ const components = {
 // Create and export the custom theme
 const theme = extendTheme({
 	colors,
-	fonts,
+	fonts: typography.fonts,
+	fontSizes: typography.fontSizes,
+	fontWeights: typography.fontWeights,
+	lineHeights: typography.lineHeights,
+	letterSpacings: typography.letterSpacings,
+	textStyles: typography.textStyles,
+	...spacing,
 	styles,
 	components,
+	// Semantic tokens for easier theme usage
+	semanticTokens: {
+		colors: {
+			"bg-surface": {
+				default: "surface.light",
+				_dark: "surface.dark",
+			},
+			"bg-muted": {
+				default: "surface.muted",
+				_dark: "gray.800",
+			},
+			"text-body": {
+				default: "text.primary",
+				_dark: "text.inverse",
+			},
+			"text-subtle": {
+				default: "text.secondary",
+				_dark: "gray.400",
+			},
+		},
+	},
 })
 
 export default theme

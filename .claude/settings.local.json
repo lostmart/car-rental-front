@@ -23,7 +23,11 @@
       "Bash(powershell:*)",
       "Bash(tree:*)",
       "Bash(tee:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npm show:*)",
+      "Bash(npm update:*)",
+      "Bash(node -p:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer > renders correctly with empty social list 1`] = `
+exports[`Footer > Snapshot > matches snapshot with empty social list 1`] = `
 <div>
   <footer
     class="css-1y3k4j4"
   >
     <div
-      class="chakra-container css-11vl7h3"
+      class="chakra-container css-1u6aw0y"
     >
       <div
         class="chakra-stack css-1urha0v"
@@ -19,7 +19,7 @@ exports[`Footer > renders correctly with empty social list 1`] = `
           class="chakra-divider css-a88frw"
         />
         <p
-          class="chakra-text css-1lqp9l0"
+          class="chakra-text css-317jq5"
         >
           © 
           2026
@@ -35,13 +35,13 @@ exports[`Footer > renders correctly with empty social list 1`] = `
 </div>
 `;
 
-exports[`Footer > renders correctly with populated social list 1`] = `
+exports[`Footer > Snapshot > matches snapshot with populated social list 1`] = `
 <div>
   <footer
     class="css-1y3k4j4"
   >
     <div
-      class="chakra-container css-11vl7h3"
+      class="chakra-container css-1u6aw0y"
     >
       <div
         class="chakra-stack css-1urha0v"
@@ -51,7 +51,7 @@ exports[`Footer > renders correctly with populated social list 1`] = `
         >
           <a
             aria-label="Visit our facebook.com page"
-            class="chakra-button css-8f5g0x"
+            class="chakra-button css-1cl82au"
             href="https://www.facebook.com"
             rel="noopener noreferrer"
             target="_blank"
@@ -74,7 +74,7 @@ exports[`Footer > renders correctly with populated social list 1`] = `
           </a>
           <a
             aria-label="Visit our twitter.com page"
-            class="chakra-button css-8f5g0x"
+            class="chakra-button css-1cl82au"
             href="https://www.twitter.com"
             rel="noopener noreferrer"
             target="_blank"
@@ -101,7 +101,7 @@ exports[`Footer > renders correctly with populated social list 1`] = `
           class="chakra-divider css-a88frw"
         />
         <p
-          class="chakra-text css-1lqp9l0"
+          class="chakra-text css-317jq5"
         >
           © 
           2026

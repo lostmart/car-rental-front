@@ -1,6 +1,6 @@
 # Car Rental Platform
 
-[![CI Tests](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml/badge.svg)](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml)
+[![CI Tests](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lostmart/car-rental-front/actions/workflows/ci.yml)
 
 A modern, responsive car rental web application built with React, TypeScript, and Vite. Features an elegant UI with smooth animations, interactive carousels, and reusable component architecture.
 
@@ -33,7 +33,7 @@ A modern, responsive car rental web application built with React, TypeScript, an
 - **Carousel**: Swiper
 - **Icons**: React Icons
 - **Styling**: CSS Modules + Global CSS
-- **Testing**: Vitest + React Testing Library + Playwright
+- **Testing**: Vitest + React Testing Library
 - **Linting**: ESLint with TypeScript rules
 - **CI/CD**: GitHub Actions
 

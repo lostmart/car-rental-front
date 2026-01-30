@@ -34,11 +34,8 @@ You MUST adhere to these fundamental rules:
 For this React + TypeScript + Vite project:
 
 - Use TypeScript with explicit prop interfaces defined in `src/interfaces/`
+- Use Cakra UI for styling with CSS Modules
 - Apply CSS Modules for component-scoped styling (`.module.css` files)
-- Follow existing component organization:
-  - `src/components/ui-parts/` for navigation elements
-  - `src/components/ui-units/` for small reusable components
-  - `src/components/` for feature components
 - Import icons from `react-icons` package
 - Ensure zero ESLint warnings (project standard)
 
@@ -81,43 +78,48 @@ When creating or refactoring components:
 ## Patterns to Follow
 
 **Component Composition**:
+
 ```typescript
 // Good: Flexible, composable
 interface CardProps {
-  children: React.ReactNode;
-  className?: string;
-  variant?: 'primary' | 'secondary';
+	children: React.ReactNode
+	className?: string
+	variant?: "primary" | "secondary"
 }
 
 // Bad: Too specific, not reusable
 interface UserCardProps {
-  userId: string; // Business logic dependency
+	userId: string // Business logic dependency
 }
 ```
 
 **State Management**:
+
 ```typescript
 // Good: UI state only
-const [isExpanded, setIsExpanded] = useState(false);
+const [isExpanded, setIsExpanded] = useState(false)
 
 // Bad: Business logic in component
-const [userData, setUserData] = useState(null);
-useEffect(() => { fetchUser(); }, []); // NO!
+const [userData, setUserData] = useState(null)
+useEffect(() => {
+	fetchUser()
+}, []) // NO!
 ```
 
 **Event Handling**:
+
 ```typescript
 // Good: Delegate to props
 interface ButtonProps {
-  onClick?: () => void;
-  label: string;
+	onClick?: () => void
+	label: string
 }
 
 // Bad: Business logic in handler
 const handleClick = () => {
-  validateForm(); // Should be in hook
-  submitToAPI(); // Should be in service
-};
+	validateForm() // Should be in hook
+	submitToAPI() // Should be in service
+}
 ```
 
 ## Accessibility Checklist
