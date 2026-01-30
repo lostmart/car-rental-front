@@ -22,7 +22,8 @@
       "Bash(powershell -Command \"npm test -- --run -u 2>&1 | Select-Object -First 30\")",
       "Bash(powershell:*)",
       "Bash(tree:*)",
-      "Bash(tee:*)"
+      "Bash(tee:*)",
+      "Bash(git rm:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
