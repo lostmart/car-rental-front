@@ -27,6 +27,9 @@ interface UseScrollPositionOptions {
  * <header className={isScrollingDown && !isAtTop ? 'hidden' : 'visible'}>
  * ```
  */
+// Constants for scroll position detection
+const SCROLL_EDGE_THRESHOLD_PX = 10
+
 export default function useScrollPosition(
 	options: UseScrollPositionOptions = {}
 ): ScrollPosition {
@@ -48,10 +51,10 @@ export default function useScrollPosition(
 			const scrollY = window.scrollY
 			const scrollX = window.scrollX
 			const isScrollingDown = scrollY > lastScrollY + threshold
-			const isAtTop = scrollY <= 10
+			const isAtTop = scrollY <= SCROLL_EDGE_THRESHOLD_PX
 			const isAtBottom =
 				window.innerHeight + scrollY >=
-				document.documentElement.scrollHeight - 10
+				document.documentElement.scrollHeight - SCROLL_EDGE_THRESHOLD_PX
 
 			setScrollPosition({
 				x: scrollX,

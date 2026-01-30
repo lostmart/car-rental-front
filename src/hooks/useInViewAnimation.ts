@@ -59,15 +59,24 @@ export default function useInViewAnimation(
 			return
 		}
 
+		let timeoutId: NodeJS.Timeout | null = null
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					const inView = entry.isIntersecting
 
+					// Clear any pending timeout
+					if (timeoutId) {
+						clearTimeout(timeoutId)
+						timeoutId = null
+					}
+
 					if (delay > 0 && inView) {
-						setTimeout(() => {
+						timeoutId = setTimeout(() => {
 							setIsInView(true)
 							setHasBeenInView(true)
+							timeoutId = null
 						}, delay)
 					} else {
 						setIsInView(inView)
@@ -91,6 +100,10 @@ export default function useInViewAnimation(
 		observer.observe(element)
 
 		return () => {
+			// Clean up timeout on unmount
+			if (timeoutId) {
+				clearTimeout(timeoutId)
+			}
 			if (element) {
 				observer.unobserve(element)
 			}

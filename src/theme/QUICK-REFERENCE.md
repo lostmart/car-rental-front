@@ -64,7 +64,20 @@ color="text.link"       // Link blue
 <Button variant="navy">Navy</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
-<Button size="sm|md|lg">Sized</Button>
+<Button variant="submit" type="submit">Submit Form</Button>
+<Button size="xs|sm|md|lg|xl">Sized</Button>
+
+{/* Submit button - Optimized for forms */}
+<Button
+  variant="submit"
+  type="submit"
+  size="lg"
+  isLoading={isSubmitting}
+  loadingText="Processing..."
+  isDisabled={!isValid}
+>
+  Reserve Now
+</Button>
 ```
 
 ### Heading
