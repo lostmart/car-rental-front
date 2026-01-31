@@ -29,12 +29,20 @@ export interface TopNavProps {
 export default function TopNav({
 	contactLinks,
 	socialLinks,
-	backgroundColor = useColorModeValue("accent.700", "gray.900"),
-	textColor = useColorModeValue("white", "gray.100"),
+	backgroundColor,
+	textColor,
 	hoverColor = "primary.600",
 }: TopNavProps) {
+	// Call hooks at component top level to comply with Rules of Hooks
+	const defaultBgColor = useColorModeValue("accent.700", "gray.900")
+	const defaultTextColor = useColorModeValue("white", "gray.100")
+
+	// Apply defaults using nullish coalescing
+	const finalBgColor = backgroundColor ?? defaultBgColor
+	const finalTextColor = textColor ?? defaultTextColor
+
 	return (
-		<Box bg={backgroundColor} py={2}>
+		<Box bg={finalBgColor} py={2}>
 			<Container maxW="container.xl">
 				<HStack justify="space-between" flexWrap="wrap">
 					<HStack spacing={6} flexWrap="wrap">
@@ -45,7 +53,7 @@ export default function TopNav({
 								display="flex"
 								alignItems="center"
 								fontSize="sm"
-								color={textColor}
+								color={finalTextColor}
 								_hover={{ color: hoverColor }}
 							>
 								<Icon as={item.icon} mr={2} />

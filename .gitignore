@@ -1,5 +1,13 @@
-# Logs
-logs
+# Dependencies
+/node_modules
+/pnpm-lock.yaml
+
+# Build artifacts
+/dist
+/build
+/out
+
+# Log files
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,45 +15,44 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Test results and coverage
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+junit.xml
+.nyc_output
 
-# Editor directories and files
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Local Netlify folder
-.netlify
+# OS-generated files
+.DS_Store
+Thumbs.db
 
-# Environment variables
-.env
-.env.test
-.env.production
-
-
-# Yarn Integrity file
-.yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
+# Temporary files
+*.tmp
+*.temp
+*.patch
 
 # Other
+.netlify
+*.local
+.yarn-integrity
+.cache
 *.tgz
 .cache-loader
-coverage
-
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
