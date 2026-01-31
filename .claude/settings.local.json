@@ -27,7 +27,8 @@
       "Bash(npm outdated:*)",
       "Bash(npm show:*)",
       "Bash(npm update:*)",
-      "Bash(node -p:*)"
+      "Bash(node -p:*)",
+      "Bash(npm view:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

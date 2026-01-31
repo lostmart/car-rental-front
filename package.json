@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.6",
-    "@chakra-ui/react": "^2.11.2",
+    "@chakra-ui/react": "^2.10.9",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@modelcontextprotocol/sdk": "^1.25.3",
@@ -27,22 +27,22 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.5",
-    "@testing-library/react": "^16.3.4",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^25.1.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/coverage-v8": "^4.2.2",
-    "@vitest/ui": "^4.2.2",
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
     "eslint": "^8.57.1",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "jsdom": "^27.0.0",
     "typescript": "^5.7.2",
     "vite": "^6.0.7",
-    "vitest": "^4.2.2",
+    "vitest": "^4.0.18",
     "vitest-preview": "^0.0.3"
   }
 }
