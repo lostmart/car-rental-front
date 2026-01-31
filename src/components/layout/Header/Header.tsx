@@ -10,47 +10,38 @@ import {
 	VStack,
 	Link as ChakraLink,
 	Collapse,
+	useColorModeValue,
 } from "@chakra-ui/react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import { Link as RouterLink } from "react-router-dom"
 import { NavigationItem, HeaderProps } from "../../../interfaces/NavigationItem"
 
-/**
- * Header Component
- *
- * A fully accessible, responsive header component with mobile menu support.
- * Built with Chakra UI for consistent styling and accessibility.
- *
- * Accessibility Features:
- * - Semantic HTML with Box (as header) and nav elements
- * - ARIA attributes built into Chakra components
- * - Keyboard navigation support
- * - Focus management for interactive elements
- *
- * @example
- * ```tsx
- * const navItems: NavigationItem[] = [
- *   { label: "Home", path: "/" },
- *   { label: "About", path: "/about" },
- *   {
- *     label: "Pages",
- *     path: "/pages",
- *     children: [
- *       { label: "Drivers", path: "/drivers" },
- *       { label: "Pricing", path: "/pricing" }
- *     ]
- *   }
- * ];
- *
- * <Header navigationItems={navItems} />
- * ```
- */
 export default function Header({
 	navigationItems,
 	className = "",
 	logo,
 }: HeaderProps) {
 	const { isOpen, onToggle, onClose } = useDisclosure()
+
+	// Dark mode color values
+	const navBg = useColorModeValue(
+		"rgba(41, 42, 45, 0.32)",
+		"rgba(26, 32, 44, 0.6)",
+	)
+	const navTextColor = useColorModeValue("white", "gray.100")
+	const mobileMenuBg = useColorModeValue(
+		"rgba(255, 255, 255, 0.85)",
+		"rgba(26, 32, 44, 0.95)",
+	)
+	const mobileTextColor = useColorModeValue("accent.700", "gold.400")
+	const toggleBtnBg = useColorModeValue(
+		"rgba(41, 42, 45, 0.32)",
+		"rgba(26, 32, 44, 0.6)",
+	)
+	const toggleBtnHoverBg = useColorModeValue(
+		"rgba(41, 42, 45, 0.6)",
+		"rgba(26, 32, 44, 0.8)",
+	)
 
 	// Flatten navigation items for mobile menu
 	const flattenNavigationItems = (
@@ -70,7 +61,7 @@ export default function Header({
 				position="absolute"
 				zIndex={2}
 				width="100%"
-				bg="rgba(41, 42, 45, 0.32)"
+				bg={navBg}
 				backdropFilter="blur(2px)"
 				aria-label="Main navigation"
 			>
@@ -92,7 +83,7 @@ export default function Header({
 									<MenuButton
 										fontSize="lg"
 										fontWeight="600"
-										color="white"
+										color={navTextColor}
 										_hover={{ opacity: 0.8 }}
 										cursor="pointer"
 									>
@@ -116,7 +107,7 @@ export default function Header({
 									to={item.path}
 									fontSize="lg"
 									fontWeight="600"
-									color="white"
+									color={navTextColor}
 									_hover={{ opacity: 0.8 }}
 								>
 									{item.label}
@@ -137,9 +128,9 @@ export default function Header({
 					icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
 					onClick={onToggle}
 					variant="ghost"
-					color="white"
-					bg={isOpen ? "rgba(41, 42, 45, 0.32)" : "transparent"}
-					_hover={{ bg: "rgba(41, 42, 45, 0.6)" }}
+					color={navTextColor}
+					bg={isOpen ? toggleBtnBg : "transparent"}
+					_hover={{ bg: toggleBtnHoverBg }}
 				/>
 
 				{/* Mobile Navigation */}
@@ -148,7 +139,7 @@ export default function Header({
 						display={{ base: "flex", md: "none" }}
 						position="absolute"
 						width="100%"
-						bg="rgba(255, 255, 255, 0.85)"
+						bg={mobileMenuBg}
 						backdropFilter="blur(10px)"
 						spacing={5}
 						py={16}
@@ -162,7 +153,7 @@ export default function Header({
 								to={item.path}
 								fontSize="lg"
 								fontWeight="600"
-								color="accent.700"
+								color={mobileTextColor}
 								onClick={onClose}
 								_hover={{ opacity: 0.7 }}
 							>

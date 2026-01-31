@@ -16,10 +16,10 @@ export default function CardDemoPage() {
 	return (
 		<Container maxW="container.xl" py={8}>
 			<VStack spacing={6} align="center" mb={12}>
-				<Heading as="h1" size="2xl" color="accent.700">
+				<Heading as="h1" size="2xl" color="text.primary">
 					Card Component Demo
 				</Heading>
-				<Text fontSize="lg" color="neutral.600">
+				<Text fontSize="lg" color="text.secondary">
 					Responsive cards with smooth hover effects
 				</Text>
 			</VStack>
@@ -28,11 +28,11 @@ export default function CardDemoPage() {
 				<Heading
 					as="h2"
 					size="lg"
-					color="accent.700"
+					color="text.primary"
 					mb={6}
 					pb={2}
 					borderBottom="2px solid"
-					borderColor="primary.500"
+					borderColor="brand.primary"
 					display="inline-block"
 				>
 					Basic Cards
@@ -111,25 +111,25 @@ export default function CardDemoPage() {
 					<Card title="Special Offer">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
+								<Text fontSize="3xl" fontWeight="bold" color="brand.primary">
 									$49
 								</Text>
-								<Text fontSize="md" color="neutral.600">
+								<Text fontSize="md" color="text.secondary">
 									/day
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="accent.700">✓ Unlimited mileage</ListItem>
-								<ListItem color="accent.700">✓ Full insurance</ListItem>
-								<ListItem color="accent.700">✓ 24/7 support</ListItem>
+								<ListItem color="text.primary">✓ Unlimited mileage</ListItem>
+								<ListItem color="text.primary">✓ Full insurance</ListItem>
+								<ListItem color="text.primary">✓ 24/7 support</ListItem>
 							</List>
 							<Button
-								bg="primary.500"
-								color="white"
+								bg="brand.primary"
+								color="text.inverse"
 								width="full"
 								mt={2}
 								_hover={{
-									bg: "primary.600",
+									bg: "brand.accent",
 									transform: "translateY(-2px)",
 									shadow: "lg",
 								}}
@@ -142,25 +142,25 @@ export default function CardDemoPage() {
 					<Card title="Premium Package">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
+								<Text fontSize="3xl" fontWeight="bold" color="brand.primary">
 									$89
 								</Text>
-								<Text fontSize="md" color="neutral.600">
+								<Text fontSize="md" color="text.secondary">
 									/day
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="accent.700">✓ GPS Navigation</ListItem>
-								<ListItem color="accent.700">✓ Child seat included</ListItem>
-								<ListItem color="accent.700">✓ Priority pickup</ListItem>
+								<ListItem color="text.primary">✓ GPS Navigation</ListItem>
+								<ListItem color="text.primary">✓ Child seat included</ListItem>
+								<ListItem color="text.primary">✓ Priority pickup</ListItem>
 							</List>
 							<Button
-								bg="primary.500"
-								color="white"
+								bg="brand.primary"
+								color="text.inverse"
 								width="full"
 								mt={2}
 								_hover={{
-									bg: "primary.600",
+									bg: "brand.accent",
 									transform: "translateY(-2px)",
 									shadow: "lg",
 								}}
@@ -173,25 +173,25 @@ export default function CardDemoPage() {
 					<Card title="Weekend Deal">
 						<VStack align="start" spacing={4}>
 							<HStack align="baseline" spacing={1}>
-								<Text fontSize="3xl" fontWeight="bold" color="primary.500">
+								<Text fontSize="3xl" fontWeight="bold" color="brand.primary">
 									$129
 								</Text>
-								<Text fontSize="md" color="neutral.600">
+								<Text fontSize="md" color="text.secondary">
 									/weekend
 								</Text>
 							</HStack>
 							<List spacing={2}>
-								<ListItem color="accent.700">✓ 3-day rental</ListItem>
-								<ListItem color="accent.700">✓ Free upgrade</ListItem>
-								<ListItem color="accent.700">✓ Roadside assistance</ListItem>
+								<ListItem color="text.primary">✓ 3-day rental</ListItem>
+								<ListItem color="text.primary">✓ Free upgrade</ListItem>
+								<ListItem color="text.primary">✓ Roadside assistance</ListItem>
 							</List>
 							<Button
-								bg="primary.500"
-								color="white"
+								bg="brand.primary"
+								color="text.inverse"
 								width="full"
 								mt={2}
 								_hover={{
-									bg: "primary.600",
+									bg: "brand.accent",
 									transform: "translateY(-2px)",
 									shadow: "lg",
 								}}

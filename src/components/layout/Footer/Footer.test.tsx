@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { ChakraProvider } from "@chakra-ui/react"
 import Footer from "./Footer"
-import UrlLink from "../../../interfaces/UrlLink"
+import type UrlLink from "../../../interfaces/UrlLink"
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"
 import theme from "../../../theme"
 
@@ -17,15 +17,22 @@ describe("Footer", () => {
 			const footer = container.querySelector("footer")
 
 			expect(footer).toBeInTheDocument()
+			expect(footer).toBeVisible()
 		})
 
 		it("renders with correct Chakra UI structure", () => {
 			const { container } = renderWithChakra(<Footer socialList={[]} />)
 			const footer = container.querySelector("footer")
-			const chakraContainer = footer?.querySelector(".chakra-container")
-			const vstack = chakraContainer?.querySelector(".chakra-stack")
 
+			// Check that footer exists and contains Chakra components
+			expect(footer).toBeInTheDocument()
+
+			// Verify Container component renders
+			const chakraContainer = footer?.querySelector(".chakra-container")
 			expect(chakraContainer).toBeInTheDocument()
+
+			// Verify VStack component renders
+			const vstack = footer?.querySelector(".chakra-stack")
 			expect(vstack).toBeInTheDocument()
 		})
 
@@ -113,7 +120,10 @@ describe("Footer", () => {
 			const { container } = renderWithChakra(<Footer socialList={links} />)
 			const link = container.querySelector('a[href="https://www.facebook.com"]')
 
+			expect(link).toBeInTheDocument()
 			expect(link).toHaveAttribute("aria-label")
+			const ariaLabel = link?.getAttribute("aria-label")
+			expect(ariaLabel).toContain("facebook.com")
 			expect(link).toHaveAttribute("rel", "noopener noreferrer")
 			expect(link).toHaveAttribute("target", "_blank")
 		})
@@ -123,6 +133,7 @@ describe("Footer", () => {
 			const divider = screen.getByRole("separator")
 
 			expect(divider).toBeInTheDocument()
+			expect(divider).toHaveAttribute("aria-orientation", "horizontal")
 		})
 	})
 

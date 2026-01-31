@@ -5,6 +5,7 @@ import {
 	Heading,
 	Text,
 	CardProps as ChakraCardProps,
+	useColorModeValue,
 } from "@chakra-ui/react"
 import { ReactNode } from "react"
 
@@ -26,12 +27,18 @@ export default function Card({
 	onClick,
 	...chakraProps
 }: CardProps) {
+	const bgColor = useColorModeValue("white", "gray.800")
+	const borderColor = useColorModeValue("gray.200", "gray.700")
+
 	return (
 		<ChakraCard
 			onClick={onClick}
 			cursor={onClick ? "pointer" : "default"}
 			_hover={onClick ? { shadow: "lg", transform: "translateY(-2px)" } : {}}
 			transition="all 0.2s"
+			bg={bgColor}
+			borderColor={borderColor}
+			borderWidth="1px"
 			{...chakraProps}
 		>
 			{image && <Image src={image} alt={imageAlt} objectFit="cover" />}
@@ -42,7 +49,7 @@ export default function Card({
 					</Heading>
 				)}
 				{description && (
-					<Text color="neutral.600" mb={4}>
+					<Text color="text.secondary" mb={4}>
 						{description}
 					</Text>
 				)}

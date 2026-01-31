@@ -11,6 +11,29 @@
 			rel="stylesheet"
 		/>
 		<title>Classic cars rentals</title>
+		<script>
+			// Chakra UI ColorModeScript - prevents flash of wrong theme
+			(function () {
+				const storageKey = "chakra-ui-color-mode"
+				const classNames = { light: "", dark: "chakra-ui-dark" }
+				function setColorMode(mode) {
+					const className = classNames[mode]
+					const root = document.documentElement
+					if (className) {
+						root.classList.add(className)
+					}
+				}
+				try {
+					const persistedMode = localStorage.getItem(storageKey)
+					const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+					const mode = persistedMode || (prefersDark ? "dark" : "light")
+					setColorMode(mode)
+				} catch (e) {
+					// Handle localStorage access errors
+					setColorMode("light")
+				}
+			})()
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>

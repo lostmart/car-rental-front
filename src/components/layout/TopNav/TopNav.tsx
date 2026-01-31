@@ -1,5 +1,6 @@
 import { Box, Container, HStack, Link, Icon } from "@chakra-ui/react"
 import SocialButtons from "../SocialButtons/SocialButtons"
+import ColorModeToggle from "../../common/ColorModeToggle/ColorModeToggle"
 import UrlLink from "../../../interfaces/UrlLink"
 
 /**
@@ -18,30 +19,6 @@ export interface TopNavProps {
 	hoverColor?: string
 }
 
-/**
- * TopNav Component
- *
- * A compact top navigation bar displaying contact information and social media links.
- * Provides quick access to contact methods and social profiles.
- *
- * Accessibility:
- * - Semantic links with proper href attributes
- * - Icons paired with text for contact links
- * - Descriptive aria-labels for social buttons
- *
- * @example
- * ```tsx
- * const contactLinks = [
- *   { urlLink: "tel:+1234567890", text: "+1 234 567 890", icon: FaPhone },
- *   { urlLink: "mailto:info@example.com", text: "info@example.com", icon: FaEnvelope }
- * ];
- * const socialLinks = [
- *   { urlLink: "https://facebook.com", icon: FaFacebookF },
- *   { urlLink: "https://twitter.com", icon: FaTwitter }
- * ];
- * <TopNav contactLinks={contactLinks} socialLinks={socialLinks} />
- * ```
- */
 export default function TopNav({
 	contactLinks,
 	socialLinks,
@@ -49,7 +26,6 @@ export default function TopNav({
 	textColor = "accent.700",
 	hoverColor = "primary.600",
 }: TopNavProps) {
-
 	return (
 		<Box bg={backgroundColor} py={2}>
 			<Container maxW="container.xl">
@@ -70,7 +46,10 @@ export default function TopNav({
 							</Link>
 						))}
 					</HStack>
-					<SocialButtons socialList={socialLinks} />
+					<HStack spacing={3}>
+						<SocialButtons socialList={socialLinks} />
+						<ColorModeToggle />
+					</HStack>
 				</HStack>
 			</Container>
 		</Box>

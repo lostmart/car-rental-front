@@ -19,26 +19,6 @@ export interface SocialButtonsProps {
 	ariaLabelPrefix?: string
 }
 
-/**
- * SocialButtons Component
- *
- * Displays a row of icon buttons for social media links.
- * Each button opens in a new tab with proper security attributes.
- *
- * Accessibility:
- * - Descriptive aria-labels for each social platform
- * - Keyboard accessible buttons
- * - Opens links in new tabs with security attributes
- *
- * @example
- * ```tsx
- * const socialLinks = [
- *   { urlLink: "https://facebook.com", icon: FaFacebookF },
- *   { urlLink: "https://twitter.com", icon: FaTwitter }
- * ];
- * <SocialButtons socialList={socialLinks} size="md" />
- * ```
- */
 const SocialButtons: React.FC<SocialButtonsProps> = ({
 	socialList,
 	size = "sm",
@@ -52,7 +32,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = ({
 			{socialList.map((item) => {
 				// Extract platform name from URL for better aria-label
 				const urlObj = new URL(item.urlLink)
-				const hostname = urlObj.hostname.replace('www.', '')
+				const hostname = urlObj.hostname.replace("www.", "")
 				const platformName = item.text || hostname
 
 				return (

@@ -51,7 +51,7 @@ exports[`Footer > Snapshot > matches snapshot with populated social list 1`] = `
         >
           <a
             aria-label="Visit our facebook.com page"
-            class="chakra-button css-1cl82au"
+            class="chakra-button css-1qg3ou2"
             href="https://www.facebook.com"
             rel="noopener noreferrer"
             target="_blank"
@@ -74,7 +74,7 @@ exports[`Footer > Snapshot > matches snapshot with populated social list 1`] = `
           </a>
           <a
             aria-label="Visit our twitter.com page"
-            class="chakra-button css-1cl82au"
+            class="chakra-button css-1qg3ou2"
             href="https://www.twitter.com"
             rel="noopener noreferrer"
             target="_blank"
