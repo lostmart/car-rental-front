@@ -1,4 +1,11 @@
-import { Box, Container, HStack, Link, Icon } from "@chakra-ui/react"
+import {
+	Box,
+	Container,
+	HStack,
+	Link,
+	Icon,
+	useColorModeValue,
+} from "@chakra-ui/react"
 import SocialButtons from "../SocialButtons/SocialButtons"
 import ColorModeToggle from "../../common/ColorModeToggle/ColorModeToggle"
 import UrlLink from "../../../interfaces/UrlLink"
@@ -22,8 +29,8 @@ export interface TopNavProps {
 export default function TopNav({
 	contactLinks,
 	socialLinks,
-	backgroundColor = "neutral.100",
-	textColor = "accent.700",
+	backgroundColor = useColorModeValue("accent.700", "gray.900"),
+	textColor = useColorModeValue("white", "gray.100"),
 	hoverColor = "primary.600",
 }: TopNavProps) {
 	return (

@@ -1,86 +1,107 @@
-# Rental Car Application
+# Gemini Project: Car Rental Platform
 
-# CLAUDE.md
+This document provides a comprehensive overview of the Car Rental Platform project, intended to be used as a context for AI-powered development tools like Gemini.
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Project Overview
 
-## Build and Development Commands
+The Car Rental Platform is a modern, responsive web application for renting cars. It is built with React, TypeScript, and Vite. The application features a dynamic and elegant user interface, including a hero section, an interactive image carousel, and a set of reusable components. It uses client-side routing for a fast and smooth user experience.
 
-- `npm run dev` - Start development server with Vite
-- `npm run build` - TypeScript compile then Vite build
-- `npm run lint` - ESLint with TypeScript rules (zero warnings allowed)
-- `npm run preview` - Preview production build
+### Key Technologies
 
-## Tech Stack
+*   **Framework**: React 18
+*   **Language**: TypeScript
+*   **Build Tool**: Vite
+*   **Routing**: React Router DOM v6
+*   **UI Components**: Chakra UI, Framer Motion
+*   **Styling**: Emotion, CSS Modules
+*   **Carousel**: Swiper
+*   **Icons**: React Icons
+*   **Testing**: Vitest, React Testing Library
+*   **Linting**: ESLint
 
-- React 18 + TypeScript + Vite
-- react-router-dom for client-side routing
-- Swiper for carousel/slider components
-- react-icons for icon components
-- CSS Modules for component-scoped styling (`.module.css`)
+## Building and Running
 
-## Architecture
+### Prerequisites
 
-**Routing**: Configured in [main.tsx](src/main.tsx) using react-router-dom's `createBrowserRouter`. All routes use the Root layout with page components as children.
+*   Node.js (LTS version 18.x or higher)
+*   npm
 
-**Layout**: [Root.tsx](src/layouts/Root.tsx) provides the shared layout (TopNav, NavBar, Footer) with `<Outlet />` for page content. Manages mobile menu state.
+### Installation
 
-**Component Organization**:
-- `src/components/ui-parts/` - Navigation elements (NavBar, TopNav, SocialButtons)
-- `src/components/ui-units/` - Small reusable components (ButtonComp)
-- `src/components/` - Feature components (CarrouselComp, FooterComponent, List)
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd rental-car
+    ```
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-**Interfaces**: TypeScript types in `src/interfaces/` - `Car` for car data, `UrlLink` for navigation links with icons.
+### Development
 
-**Styling**: Chakra UI with CSS Modules for component-scoped styling.
+To start the development server with hot-module reloading, run:
 
-## Code Style
+```bash
+npm run dev
+```
 
-- Use strict TypeScript with interfaces in `src/interfaces/`
-- Export interfaces as `export default interface Name`
-- Component props should be typed with clear, descriptive interfaces
-- Use `ReactNode` for children props
-- Default props should use TypeScript default parameters, not defaultProps
+The application will be available at `http://localhost:5173`.
 
-- Use CSS Modules for component-scoped styles: `import styles from "./ComponentName.module.css"`
-- Global styles go in `src/css/` or `src/index.css`
-- Class names in JSX: `className={styles.container}`
-- Combine styles dynamically: `const cardClasses = \`${styles.card} ${className}\`.trim()`
+### Building for Production
 
-- Use error boundaries for route-level error handling (ErrorPage component exists)
-- Implement proper TypeScript types to catch errors at compile time
-- No try-catch patterns currently established - add as needed for async operations
+To create an optimized production build, run:
 
-- Use function components with React hooks
-- Export components as `export default function ComponentName()`
-- Component names should be PascalCase
-- Props interface should be named `ComponentNameProps` or `ComponentProps`
-- Destructure props in function parameters for cleaner code
+```bash
+npm run build
+```
 
-- Always run `npm run lint` before committing - zero warnings policy
-- Use TypeScript `strict` mode - zero warnings policy
-- No unused variables or parameters allowed
-- Prefer explicit return types for complex functions
-- Use React.StrictMode in development
+The bundled application will be located in the `dist/` directory.
 
-- Use functional components with hooks
-- Implement proper key props for lists
-- Use Link component from react-router-dom for navigation
-- Prefer controlled components with proper state management
-- Use children prop for composition patterns
+### Preview Production Build
 
-## Important Notes
+To preview the production build locally, run:
 
-- This project has no testing framework - consider adding Vitest for modern React testing
-- No build optimization configured - Vite handles most optimizations automatically
-- ESLint is strict with zero warnings policy
-- TypeScript strict mode enabled - all type errors must be resolved
-- CSS Modules for styling - no global class pollution
+```bash
+npm run preview
+```
 
-## Development Workflow
+### Testing
 
-1. Always run `npm run lint` before committing - zero warnings policy
-2. Use `npm run dev` for development with hot reload
-3. Build process includes TypeScript compilation - fix type errors first
-4. No automated tests currently - manual testing required
-5. CSS changes should be component-scoped using CSS Modules
+The project uses Vitest for unit and integration testing.
+
+*   **Run tests in watch mode**:
+    ```bash
+    npm test
+    ```
+*   **Run tests once with coverage**:
+    ```bash
+    npm run test:coverage
+    ```
+*   **Open the interactive test UI**:
+    ```bash
+    npm run test:ui
+    ```
+
+Coverage reports are generated in the `coverage/` directory.
+
+### Linting
+
+To check the code quality and enforce coding standards, run:
+
+```bash
+npm run lint
+```
+
+The project is configured to enforce zero warnings.
+
+## Development Conventions
+
+*   **Coding Style**: The project follows standard TypeScript and React best practices.
+*   **Component Structure**: Components are organized into `common`, `features`, and `layout` directories. Reusable, generic components are in `common`, feature-specific components are in `features`, and layout components are in `layout`.
+*   **Styling**: The project uses a combination of Chakra UI for pre-built components and Emotion for custom styling.
+*   **State Management**: For this project, we are using a combination of local component state (`useState`, `useReducer`) and React Context (`createContext`) for global state.
+*   **Testing**: All new components and features should have corresponding unit or integration tests.
+*   **Commit Messages**: Commit messages should be descriptive and follow conventional commit standards.
+*   **Branching**: Feature branches should be created from the `main` branch.
+*   **Pull Requests**: All code changes should be submitted through pull requests and require at least one approval before merging.
