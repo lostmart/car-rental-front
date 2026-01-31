@@ -3,9 +3,14 @@
  *
  * This file demonstrates various ways to use the HeroSection component
  * with the parallax background effect.
+ *
+ * NOTE: Import path is relative from examples folder.
+ * In your actual code, adjust based on your file location:
+ * - From src/pages/: "../components/features/HeroSection/HeroSection"
+ * - From src/components/: "./features/HeroSection/HeroSection"
  */
 
-import HeroSection from "./HeroSection"
+import HeroSection from "../../src/components/features/HeroSection/HeroSection"
 import { useNavigate } from "react-router-dom"
 
 /**
@@ -122,14 +127,18 @@ export function AccessibleHero() {
  * Example 6: Conditional Parallax Based on Device
  *
  * Shows how to conditionally enable/disable parallax based on
- * device capabilities or screen size.
+ * device capabilities or screen size using Chakra UI's responsive hook.
  */
+import { useBreakpointValue } from "@chakra-ui/react"
+
 export function ResponsiveParallaxHero() {
 	const navigate = useNavigate()
 
-	// Disable parallax on mobile for better performance
-	const isMobile = window.innerWidth < 768
-	const enableParallax = !isMobile
+	// Disable parallax on mobile for better performance (SSR-safe)
+	const enableParallax = useBreakpointValue(
+		{ base: false, md: true },
+		{ fallback: 'md', ssr: true }
+	)
 
 	return (
 		<HeroSection

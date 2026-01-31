@@ -3,10 +3,15 @@
  *
  * This file demonstrates how to integrate the HeroSection component
  * into various page layouts and scenarios.
+ *
+ * NOTE: Import path is relative from examples folder.
+ * In your actual code, adjust based on your file location:
+ * - From src/pages/: "../components/features/HeroSection/HeroSection"
+ * - From src/components/: "./features/HeroSection/HeroSection"
  */
 
 import { Box } from "@chakra-ui/react"
-import HeroSection from "./HeroSection"
+import HeroSection from "../../src/components/features/HeroSection/HeroSection"
 
 /**
  * Example 1: Basic Usage - Landing Page

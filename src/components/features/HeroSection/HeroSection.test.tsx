@@ -28,7 +28,9 @@ describe("HeroSection", () => {
 
 	it("renders the subheading text", () => {
 		renderComponent()
-		const subheading = screen.getByText(/tour paris in authentic vintage automobiles/i)
+		const subheading = screen.getByText(
+			/tour paris in authentic vintage automobiles/i,
+		)
 		expect(subheading).toBeInTheDocument()
 	})
 
@@ -59,9 +61,4 @@ describe("HeroSection", () => {
 		expect(banner).toBeInTheDocument()
 	})
 
-	it("displays scroll to explore text", () => {
-		renderComponent()
-		const scrollText = screen.getByText(/scroll to explore/i)
-		expect(scrollText).toBeInTheDocument()
-	})
 })

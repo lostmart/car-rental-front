@@ -1,5 +1,19 @@
-import { Box, Heading, Text, Button, VStack, HStack, Icon } from "@chakra-ui/react"
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
+import {
+	Box,
+	Heading,
+	Text,
+	Button,
+	VStack,
+	HStack,
+	Icon,
+	useColorMode,
+} from "@chakra-ui/react"
+import {
+	motion,
+	useScroll,
+	useTransform,
+	useReducedMotion,
+} from "framer-motion"
 import { FaChevronDown } from "react-icons/fa"
 import { useRef } from "react"
 
@@ -33,36 +47,6 @@ export interface HeroSectionProps {
 	maxWidth?: string
 }
 
-/**
- * HeroSection Component
- *
- * A visually stunning hero section for the luxury car rental landing page.
- * Features parallax scrolling, staggered animations, and responsive design.
- *
- * Accessibility:
- * - Semantic section element with proper heading hierarchy
- * - Keyboard accessible CTA buttons
- * - Screen reader friendly with descriptive labels
- * - Respects prefers-reduced-motion for animations
- *
- * Animations:
- * - Parallax background effect on scroll
- * - Staggered fade-in and slide-up for content
- * - Infinite bounce animation on scroll indicator
- *
- * @example
- * ```tsx
- * <HeroSection
- *   heading="Experience Classic Elegance"
- *   subheading="Tour Paris in authentic vintage automobiles"
- *   primaryButtonLabel="Browse Cars"
- *   secondaryButtonLabel="View Tours"
- *   onPrimaryClick={() => navigate('/cars')}
- *   backgroundImage="/images/hero-bg.jpg"
- *   enableParallax={true}
- * />
- * ```
- */
 export default function HeroSection({
 	heading = "Experience Classic Elegance",
 	subheading = "Tour Paris in authentic vintage automobiles",
@@ -78,6 +62,13 @@ export default function HeroSection({
 	maxWidth = "1200px",
 }: HeroSectionProps = {}) {
 	const containerRef = useRef<HTMLDivElement>(null)
+	const { colorMode } = useColorMode()
+
+	// Theme-based background images
+	const darkModeImage = "/assets/imgs/car01.jpg"
+	const lightModeImage = "/assets/imgs/car03.jpg"
+	const currentBackgroundImage =
+		backgroundImage || (colorMode === "dark" ? darkModeImage : lightModeImage)
 
 	// Check user's motion preference for accessibility
 	const prefersReducedMotion = useReducedMotion()
@@ -85,7 +76,7 @@ export default function HeroSection({
 	// Parallax scroll effect
 	const { scrollY } = useScroll({
 		target: containerRef,
-		offset: ["start start", "end start"]
+		offset: ["start start", "end start"],
 	})
 
 	// Transform scroll position to background position for parallax
@@ -94,7 +85,7 @@ export default function HeroSection({
 	const backgroundY = useTransform(
 		scrollY,
 		[0, 1000],
-		(prefersReducedMotion || !enableParallax) ? [0, 0] : [0, 500]
+		prefersReducedMotion || !enableParallax ? [0, 0] : [0, 500],
 	)
 
 	// Animation variants for staggered children
@@ -113,7 +104,7 @@ export default function HeroSection({
 	const itemVariants = {
 		hidden: {
 			opacity: prefersReducedMotion ? 1 : 0,
-			y: prefersReducedMotion ? 0 : 50
+			y: prefersReducedMotion ? 0 : 50,
 		},
 		visible: {
 			opacity: 1,
@@ -156,13 +147,17 @@ export default function HeroSection({
 				right={0}
 				bottom={0}
 				style={{ y: backgroundY }}
-				backgroundImage={backgroundImage ? `url(${backgroundImage})` : undefined}
+				backgroundImage={
+					currentBackgroundImage ? `url(${currentBackgroundImage})` : undefined
+				}
 				backgroundSize="cover"
 				backgroundPosition="center"
-				background={backgroundImage
-					? undefined
-					: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
+				background={
+					currentBackgroundImage
+						? undefined
+						: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
 				}
+			transition="background-image 0.5s ease-in-out"
 				_before={{
 					content: '""',
 					position: "absolute",
@@ -170,7 +165,7 @@ export default function HeroSection({
 					left: 0,
 					right: 0,
 					bottom: 0,
-					background: backgroundImage
+					background: currentBackgroundImage
 						? "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
 						: undefined,
 				}}

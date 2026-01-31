@@ -2,6 +2,8 @@
 
 A production-ready, visually stunning hero section component for the luxury car rental application. Features parallax scrolling, staggered animations, and full accessibility support.
 
+> **📋 SRS Context:** This is a **marketing/landing page component** and is not part of the core SRS booking engine requirements. The SRS focuses on booking functionality (wizard, tours, detours, payment). HeroSection is categorized as **Phase 2 visual enhancement** in `docs/PLAN.md` but is currently used in `HomePage.tsx`.
+
 ## Features
 
 ### Visual Design
@@ -24,7 +26,7 @@ A production-ready, visually stunning hero section component for the luxury car 
 - ✅ ARIA labels on buttons for screen readers
 - ✅ Focus indicators on scroll indicator
 - ✅ High color contrast (white text on dark overlay)
-- ✅ Respects `prefers-reduced-motion` (via Framer Motion defaults)
+- ✅ Respects `prefers-reduced-motion` via explicit `useReducedMotion()` hook implementation
 
 ### Responsive Design
 - **Mobile (<768px):**
@@ -79,45 +81,38 @@ function LandingPage() {
 
 ## Adding a Background Image
 
-The component is set up to support background images. To add one:
-
-1. **Locate the TODO comment** in `HeroSection.tsx` (around line 89)
-2. **Add the backgroundImage property**:
+The component accepts a `backgroundImage` prop for easy customization:
 
 ```tsx
-<Box
-  as={motion.div}
-  position="absolute"
-  // ... other props
-  backgroundImage="url('/assets/vintage-car-hero.jpg')"  // Add this
-  backgroundSize="cover"
-  backgroundPosition="center"
-  // ... rest of props
->
+<HeroSection
+  backgroundImage="/assets/vintage-car-hero.jpg"
+  heading="Experience Classic Elegance"
+  subheading="Tour Paris in authentic vintage automobiles"
+/>
 ```
 
-3. **Recommended image specifications**:
-   - Resolution: 1920x1080 minimum (2K or 4K for high-DPI displays)
-   - Format: WebP or optimized JPEG
-   - Subject: Vintage car in elegant setting
-   - Composition: Ensure center/right space for text overlay
-   - File size: < 500KB after compression
+**Recommended image specifications**:
+- Resolution: 1920x1080 minimum (2K for high-DPI displays, 4K for luxury aesthetic)
+- Format: WebP with JPEG fallback for older browsers
+- Subject: Vintage car in elegant setting
+- Composition: Ensure center/right space for text overlay
+- File size: < 500KB after compression (use tools like Squoosh or ImageOptim)
 
 ## Customization
 
 ### Changing Content
 
-Edit the text content in `HeroSection.tsx`:
+Use component props to customize all text content:
 
 ```tsx
-// Main heading (line ~127)
-<Heading>Your Custom Heading</Heading>
-
-// Subheading (line ~142)
-<Text>Your custom subheading text</Text>
-
-// Button labels (lines ~168, 189)
-<Button>Your CTA Text</Button>
+<HeroSection
+  heading="Your Custom Heading"
+  subheading="Your custom subheading text"
+  primaryButtonLabel="Your Primary CTA"
+  secondaryButtonLabel="Your Secondary CTA"
+  onPrimaryClick={() => navigate('/primary-action')}
+  onSecondaryClick={() => navigate('/secondary-action')}
+/>
 ```
 
 ### Adjusting Colors
@@ -169,20 +164,49 @@ const backgroundY = useTransform(scrollY, [0, 1000], [0, 300])
 
 ## Component Props
 
-Currently, the component accepts no props (self-contained design). To make it configurable, consider adding:
+The component is fully configurable via TypeScript props:
 
 ```tsx
 interface HeroSectionProps {
+  /** Main heading text (default: "Experience Classic Elegance") */
   heading?: string
+
+  /** Subheading text (default: "Tour Paris in authentic vintage automobiles") */
   subheading?: string
-  primaryButtonText?: string
-  secondaryButtonText?: string
-  primaryButtonAction?: () => void
-  secondaryButtonAction?: () => void
+
+  /** Primary CTA button label (default: "Browse Cars") */
+  primaryButtonLabel?: string
+
+  /** Secondary CTA button label (default: "View Tours") */
+  secondaryButtonLabel?: string
+
+  /** Primary button click handler */
+  onPrimaryClick?: () => void
+
+  /** Secondary button click handler */
+  onSecondaryClick?: () => void
+
+  /** Background image URL */
   backgroundImage?: string
+
+  /** Enable/disable parallax effect (default: true) */
+  enableParallax?: boolean
+
+  /** Show/hide scroll indicator (default: true) */
   showScrollIndicator?: boolean
+
+  /** Custom scroll indicator text (default: "Scroll down to explore") */
+  scrollIndicatorText?: string
+
+  /** Custom section height (default: "100vh") */
+  height?: string
+
+  /** Maximum content width (default: "1200px") */
+  maxWidth?: string
 }
 ```
+
+**All props are optional** and have sensible defaults matching the luxury car rental theme.
 
 ## Technical Details
 
