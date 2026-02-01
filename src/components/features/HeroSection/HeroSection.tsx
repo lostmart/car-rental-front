@@ -152,11 +152,7 @@ export default function HeroSection({
 				}
 				backgroundSize="cover"
 				backgroundPosition="center"
-				background={
-					currentBackgroundImage
-						? undefined
-						: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
-				}
+				background={undefined}
 			transition="background-image 0.5s ease-in-out"
 				_before={{
 					content: '""',
@@ -165,9 +161,7 @@ export default function HeroSection({
 					left: 0,
 					right: 0,
 					bottom: 0,
-					background: currentBackgroundImage
-						? "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
-						: undefined,
+					background: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7))",
 				}}
 			/>
 
